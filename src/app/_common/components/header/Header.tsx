@@ -5,6 +5,7 @@ import * as S from './styled';
 const Header = () => {
   return (
     <S.StyledHeader>
+      <S.Logo>Logo</S.Logo>
       <S.MenuList>
         <S.MenuItem>Home</S.MenuItem>
         <S.MenuItem>About</S.MenuItem>

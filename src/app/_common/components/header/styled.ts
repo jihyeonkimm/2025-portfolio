@@ -4,7 +4,14 @@ export const StyledHeader = styled.header`
   position: fixed;
   top: 30px;
   width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 0 20px;
+  z-index: 1000;
 `;
+
+export const Logo = styled.h1``;
 
 export const MenuList = styled.ul`
   display: flex;
