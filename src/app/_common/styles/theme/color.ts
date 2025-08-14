@@ -5,6 +5,10 @@ export type Color = {
   };
   primary: {
     orange: string;
+    gray: string;
+  };
+  background: {
+    gray: string;
   };
 };
 
@@ -15,5 +19,9 @@ export const color: Color = {
   },
   primary: {
     orange: '#f74932',
+    gray: '#636363',
+  },
+  background: {
+    gray: '#f9f9f9',
   },
 };
