@@ -17,13 +17,23 @@ export const IntroList = styled.ul`
   grid-template-columns: repeat(3, 1fr);
   align-items: center;
   gap: 0 20px;
-  margin-top: 30px;
+  margin-top: 60px;
 `;
 
 export const IntroItem = styled.li`
   padding: 2rem;
   background-color: ${({ theme }) => theme.color.background.gray};
   border-radius: 10px;
+  border: 1px solid transparent;
+  transition: 0.3s;
+
+  @media (hover: hover) {
+    &:hover {
+      background-color: ${({ theme }) => theme.color.common.white};
+      border-color: ${({ theme }) => theme.color.background.gray};
+      box-shadow: 0 10px 20px rgba(0, 0, 0, 0.05);
+    }
+  }
 `;
 
 export const IntroItemTitle = styled.strong`
@@ -42,4 +52,5 @@ export const IntroItemIcon = styled.span`
   display: block;
   width: 40px;
   height: 40px;
+  margin-bottom: 60px;
 `;

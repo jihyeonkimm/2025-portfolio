@@ -10,6 +10,7 @@
     "svgr": "npx @svgr/cli --out-dir src/app/_common/assets/icons/components src/app/_common/assets/icons"
   },
   "dependencies": {
+    "firebase": "^12.1.0",
     "lottie-react": "^2.4.1",
     "next": "15.3.5",
     "react": "^19.0.0",

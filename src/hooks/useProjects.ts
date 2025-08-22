@@ -1,0 +1,36 @@
+import { useState, useEffect } from 'react';
+
+interface Project {
+  id: string;
+  title: string;
+  description: string;
+  // 추가 필드들...
+}
+
+export const useProjects = () => {
+  const [projects, setProjects] = useState<Project[]>([]);
+  const [loading, setLoading] = useState(true);
+  const [error, setError] = useState<string | null>(null);
+
+  useEffect(() => {
+    const getProjects = async () => {
+      try {
+        const response = await fetch('/api/projects');
+        if (!response.ok) {
+          throw new Error('Failed to fetch');
+        }
+
+        const data = await response.json();
+        setProjects(data);
+      } catch (error) {
+        setError(error instanceof Error ? error.message : '알수없는 에러');
+      } finally {
+        setLoading(false);
+      }
+    };
+
+    getProjects();
+  }, []);
+
+  return { projects, loading, error };
+};
