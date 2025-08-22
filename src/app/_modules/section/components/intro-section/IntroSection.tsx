@@ -6,6 +6,7 @@ import Inner from '@/app/_common/components/inner/Inner';
 import { IntroIcon01 } from '@/app/_common/assets/icons/components/index';
 import { IntroIcon02 } from '@/app/_common/assets/icons/components/index';
 import { IntroIcon03 } from '@/app/_common/assets/icons/components/index';
+import introDataJson from '@/data/introData.json';
 
 interface DataProps {
   id: number;
@@ -14,26 +15,16 @@ interface DataProps {
   icon: React.ReactNode;
 }
 
-const data: DataProps[] = [
-  {
-    id: 1,
-    title: '첫번째 타이틀',
-    description: '첫번째 설명',
-    icon: <IntroIcon01 />,
-  },
-  {
-    id: 2,
-    title: '두번째 타이틀',
-    description: '두번째 설명',
-    icon: <IntroIcon02 />,
-  },
-  {
-    id: 3,
-    title: '세번째 타이틀',
-    description: '세번째 설명',
-    icon: <IntroIcon03 />,
-  },
-];
+const iconMap = {
+  IntroIcon01: <IntroIcon01 />,
+  IntroIcon02: <IntroIcon02 />,
+  IntroIcon03: <IntroIcon03 />,
+};
+
+const data: DataProps[] = introDataJson.map(item => ({
+  ...item,
+  icon: iconMap[item.icon as keyof typeof iconMap],
+}));
 
 const IntroSection = () => {
   return (

@@ -17,6 +17,12 @@ const GlobalStyle = createGlobalStyle`
 		font-size: 62.5%;
 		font-family: 'Pretendard', sans-serif;
 	}
+
+	button {
+		padding: 0;
+		border-width: 0;
+		background-color: transparent;
+	}
 `;
 
 export default GlobalStyle;

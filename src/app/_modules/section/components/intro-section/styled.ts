@@ -2,7 +2,7 @@ import styled from 'styled-components';
 
 export const StyledIntroSection = styled.section`
   position: relative;
-  padding: 4rem 0;
+  padding: 8rem 0 10rem;
 `;
 
 export const IntroText = styled.p`
@@ -21,6 +21,7 @@ export const IntroList = styled.ul`
 `;
 
 export const IntroItem = styled.li`
+  align-self: stretch;
   padding: 2rem;
   background-color: ${({ theme }) => theme.color.background.gray};
   border-radius: 10px;
@@ -37,14 +38,16 @@ export const IntroItem = styled.li`
 `;
 
 export const IntroItemTitle = styled.strong`
-  font-size: 1.6rem;
+  font-size: 1.4rem;
+  line-height: 120%;
   letter-spacing: -0.5px;
 `;
 
 export const IntroItemText = styled.p`
   margin-top: 18px;
   color: ${({ theme }) => theme.color.primary.gray};
-  font-size: 1.2rem;
+  font-size: 1rem;
+  line-height: 140%;
   letter-spacing: -0.5px;
 `;
 
