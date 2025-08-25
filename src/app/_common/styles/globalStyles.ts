@@ -23,6 +23,11 @@ const GlobalStyle = createGlobalStyle`
 		border-width: 0;
 		background-color: transparent;
 	}
+
+	a {
+		text-decoration: none;
+		color: inherit;
+	}
 `;
 
 export default GlobalStyle;

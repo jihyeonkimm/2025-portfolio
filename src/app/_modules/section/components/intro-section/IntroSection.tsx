@@ -1,3 +1,5 @@
+'use client';
+
 import React from 'react';
 import * as S from './styled';
 import SectionTitle from '@/app/_common/components/section-title/SectionTitle';
@@ -21,7 +23,7 @@ const iconMap = {
   IntroIcon03: <IntroIcon03 />,
 };
 
-const data: DataProps[] = introDataJson.map(item => ({
+const data: DataProps[] = introDataJson.map((item) => ({
   ...item,
   icon: iconMap[item.icon as keyof typeof iconMap],
 }));

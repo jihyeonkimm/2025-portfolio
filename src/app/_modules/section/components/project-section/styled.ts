@@ -63,3 +63,13 @@ export const ProjectItemTag = styled.span`
   background-color: ${({ theme }) => theme.color.common.white};
   overflow: hidden;
 `;
+
+export const MoreButton = styled.button`
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  line-height: 22px;
+  padding: 0px 10px;
+  border: 1px solid ${({ theme }) => theme.color.common.black};
+  border-radius: 50px;
+`;

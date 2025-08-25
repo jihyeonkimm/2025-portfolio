@@ -1,5 +1,6 @@
 'use client';
 
+import React from 'react';
 import * as S from './styled';
 
 const Header = () => {

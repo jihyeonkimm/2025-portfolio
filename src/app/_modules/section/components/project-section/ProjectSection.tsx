@@ -1,3 +1,5 @@
+'use client';
+
 import React from 'react';
 import * as S from './styled';
 import Inner from '@/app/_common/components/inner/Inner';
@@ -36,6 +38,7 @@ const ProjectSection = () => {
             ))}
           </S.ProjectList>
         )}
+        <S.MoreButton type='button'>더보기</S.MoreButton>
       </Inner>
     </S.StyledProjectSection>
   );
