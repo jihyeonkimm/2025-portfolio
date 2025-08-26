@@ -16,6 +16,20 @@ export const StyledHeader = styled.header`
 export const Logo = styled.h1`
   position: relative;
   left: 0;
+  width: 70px;
+  height: 70px;
+
+  & a {
+    position: relative;
+    display: block;
+    width: 100%;
+    height: 100%;
+  }
+
+  & img {
+    width: 100%;
+    height: auto;
+  }
 `;
 
 export const MenuList = styled.ul`

@@ -2,11 +2,17 @@
 
 import React from 'react';
 import * as S from './styled';
+import Image from 'next/image';
+import Link from 'next/link';
 
 const Header = () => {
   return (
     <S.StyledHeader>
-      <S.Logo>Logo</S.Logo>
+      <S.Logo>
+        <Link href={'/'}>
+          <Image src='/assets/images/logo.png' alt='logo' fill sizes='100%' />
+        </Link>
+      </S.Logo>
       <S.MenuList>
         <S.MenuItem>Home</S.MenuItem>
         <S.MenuItem>About</S.MenuItem>

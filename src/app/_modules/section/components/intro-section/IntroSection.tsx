@@ -9,6 +9,7 @@ import { IntroIcon01 } from '@/app/_common/assets/icons/components/index';
 import { IntroIcon02 } from '@/app/_common/assets/icons/components/index';
 import { IntroIcon03 } from '@/app/_common/assets/icons/components/index';
 import introDataJson from '@/data/introData.json';
+import useScroll from '@/app/hooks/useScroll';
 
 interface DataProps {
   id: number;
@@ -28,6 +29,26 @@ const data: DataProps[] = introDataJson.map((item) => ({
   icon: iconMap[item.icon as keyof typeof iconMap],
 }));
 
+const IntroItem = ({ item }: { item: DataProps }) => {
+  const { elementRef, isVisible } = useScroll({
+    threshold: 0.2,
+    rootMargin: '-50px',
+    triggerOnce: true,
+  });
+
+  return (
+    <S.IntroItem
+      key={item.id}
+      ref={elementRef as React.RefObject<HTMLLIElement>}
+      $isVisible={isVisible}
+    >
+      <S.IntroItemIcon>{item.icon}</S.IntroItemIcon>
+      <S.IntroItemTitle>{item.title}</S.IntroItemTitle>
+      <S.IntroItemText>{item.description}</S.IntroItemText>
+    </S.IntroItem>
+  );
+};
+
 const IntroSection = () => {
   return (
     <S.StyledIntroSection>
@@ -36,11 +57,7 @@ const IntroSection = () => {
         <S.IntroText>적극적으로 개발하고 협업 중심으로 사고합니다.</S.IntroText>
         <S.IntroList>
           {data.map((item) => (
-            <S.IntroItem key={item.id}>
-              <S.IntroItemIcon>{item.icon}</S.IntroItemIcon>
-              <S.IntroItemTitle>{item.title}</S.IntroItemTitle>
-              <S.IntroItemText>{item.description}</S.IntroItemText>
-            </S.IntroItem>
+            <IntroItem item={item} key={item.id} />
           ))}
         </S.IntroList>
       </Inner>

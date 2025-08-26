@@ -1,3 +1,4 @@
+import { animation } from '@/app/_common/styles/theme/keyframes';
 import styled from 'styled-components';
 
 export const StyledProjectSection = styled.section`
@@ -14,13 +15,17 @@ export const ProjectList = styled.ul`
   margin-top: 60px;
 `;
 
-export const ProjectItem = styled.li`
+export const ProjectItem = styled.li<{ $isVisible: boolean }>`
   position: relative;
   width: 50%;
+  opacity: 0;
+  transform: translateY(20px);
 
   &:nth-child(even) {
     align-self: flex-end;
   }
+
+  ${({ $isVisible }) => $isVisible && animation.showElement('0.5s', '0s')}
 `;
 
 export const ProjectItemButton = styled.button`
@@ -42,6 +47,33 @@ export const ProjectItemImage = styled.span`
 
   & img {
     width: 100%;
+  }
+
+  &::after {
+    content: '';
+    display: block;
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 0;
+    height: 100%;
+    background-color: ${({ theme }) => theme.color.primary.orange};
+    animation: imageOverlay 1s cubic-bezier(0.16, 0.57, 0.76, 0.42) forwards;
+  }
+
+  @keyframes imageOverlay {
+    0% {
+      width: 0;
+      left: 0;
+    }
+    50% {
+      width: 100%;
+      left: 0;
+    }
+    100% {
+      width: 0;
+      left: 100%;
+    }
   }
 `;
 

@@ -36,7 +36,9 @@ export const ContactLink = styled(Link)`
   letter-spacing: -0.5px;
   transition: 0.3s;
 
-  &:hover {
-    color: ${({ theme }) => theme.color.primary.orange};
+  @media (hover: hover) {
+    &:hover {
+      color: ${({ theme }) => theme.color.primary.orange};
+    }
   }
 `;

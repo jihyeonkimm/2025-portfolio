@@ -1,3 +1,4 @@
+import { animation } from '@/app/_common/styles/theme/keyframes';
 import styled from 'styled-components';
 
 export const StyledIntroSection = styled.section`
@@ -20,13 +21,25 @@ export const IntroList = styled.ul`
   margin-top: 60px;
 `;
 
-export const IntroItem = styled.li`
+export const IntroItem = styled.li<{ $isVisible: boolean }>`
   align-self: stretch;
   padding: 2rem;
   background-color: ${({ theme }) => theme.color.background.gray};
   border-radius: 10px;
   border: 1px solid transparent;
   transition: 0.3s;
+  opacity: 0;
+  transform: translateY(20px);
+
+  ${({ $isVisible }) => $isVisible && animation.showElement('0.5s', '0s')}
+
+  &:nth-child(2) {
+    ${({ $isVisible }) => $isVisible && animation.showElement('0.5s', '0.3s')}
+  }
+
+  &:nth-child(3) {
+    ${({ $isVisible }) => $isVisible && animation.showElement('0.5s', '0.6s')}
+  }
 
   @media (hover: hover) {
     &:hover {
