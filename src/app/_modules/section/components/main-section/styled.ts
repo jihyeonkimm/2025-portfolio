@@ -1,3 +1,4 @@
+import { animation } from '@/app/_common/styles/theme/keyframes';
 import styled from 'styled-components';
 
 export const StyledMainContainer = styled.main`
@@ -17,6 +18,16 @@ export const MainTitle = styled.h2`
   letter-spacing: -0.1px;
 `;
 
+export const MainTitleText = styled.p<{ $isPlaying: boolean; $color?: string }>`
+  display: inline-block;
+  color: ${({ theme, $color }) =>
+    $color === 'orange' ? theme.color.primary.orange : theme.color.common.black};
+  opacity: 0;
+  transform: translateY(20px);
+
+  ${({ $isPlaying }) => $isPlaying && animation.showElement('0.5s')}
+`;
+
 export const MainText = styled.p`
   display: inline-block;
   color: ${({ theme }) => theme.color.primary.orange};
@@ -34,13 +45,21 @@ export const Tag = styled.span`
   display: flex;
   align-items: center;
   gap: 0 10px;
-
   padding: 20px 23px 19px 18px;
   -webkit-backdrop-filter: blur(18px);
   backdrop-filter: blur(18px);
   background-color: #fff6;
   border-radius: 40px;
   font-size: 1.4rem;
+  opacity: 0;
+
+  animation: show 0.5s 2.8s forwards;
+
+  @keyframes show {
+    to {
+      opacity: 1;
+    }
+  }
 `;
 
 export const Dot = styled.span`

@@ -6,9 +6,55 @@ import * as S from './styled';
 import LottieAnimation from '@/app/_common/components/lottie-animation/LottieAnimation';
 import mouse from '@public/assets/lottie/mouse.json';
 
+interface TextDataProps {
+  id: number;
+  text: string;
+  color?: string;
+}
+
 const MainSection = () => {
-  const [firstTagPosition, setFirstTagPosition] = useState({ x: -30, y: 15 });
-  const [secondTagPosition, setSecondTagPosition] = useState({ x: 30, y: -15 });
+  const [firstTagPosition, setFirstTagPosition] = useState<{ x: number; y: number }>({
+    x: -30,
+    y: 15,
+  });
+  const [secondTagPosition, setSecondTagPosition] = useState<{ x: number; y: number }>({
+    x: 30,
+    y: -15,
+  });
+  const [isPlaying, setIsPlaying] = useState<boolean>(false);
+
+  const textData: TextDataProps[] = [
+    { id: 1, text: 'PROACTIVE ', color: 'orange' },
+    { id: 2, text: 'DEVELOPER, \n' },
+    { id: 3, text: 'COLLABORATIVE ' },
+    { id: 4, text: 'MINDSET', color: 'orange' },
+  ];
+
+  const createTextArray = () => {
+    const textArray: TextDataProps[] = [];
+    let textIndex = 0;
+
+    textData.forEach(({ text, color }) => {
+      text.split('').forEach((char) => {
+        textArray.push({
+          id: textIndex++,
+          text: char === ' ' ? '\u00A0' : char === '\n' ? '\n' : char,
+          color,
+        });
+      });
+    });
+
+    return textArray;
+  };
+
+  const textArray = createTextArray();
+
+  const playAnimation = () => {
+    setIsPlaying(false);
+    setTimeout(() => {
+      setIsPlaying(true);
+    }, 100);
+  };
 
   useEffect(() => {
     const handleMouseMove = (e: MouseEvent) => {
@@ -46,6 +92,8 @@ const MainSection = () => {
 
     document.addEventListener('mousemove', handleMouseMove);
 
+    playAnimation();
+
     return () => {
       document.removeEventListener('mousemove', handleMouseMove);
     };
@@ -54,8 +102,16 @@ const MainSection = () => {
   return (
     <S.StyledMainContainer>
       <S.MainTitle>
-        <S.MainText>PROACTIVE</S.MainText> DEVELOPER, <br />
-        COLLABORATIVE <S.MainText>MINDSET</S.MainText>
+        {textArray.map(({ id, text, color }) => (
+          <S.MainTitleText
+            key={`${id}-${text}`}
+            $isPlaying={isPlaying}
+            $color={color}
+            style={{ animationDelay: `${id * 0.05}s` }}
+          >
+            {text}
+          </S.MainTitleText>
+        ))}
       </S.MainTitle>
 
       <S.Tag
