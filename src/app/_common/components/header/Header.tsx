@@ -19,6 +19,11 @@ const Header = () => {
         <S.MenuItem>Projects</S.MenuItem>
         <S.MenuItem>Contact</S.MenuItem>
       </S.MenuList>
+      <S.MobileMenuButton type='button'>
+        <span></span>
+        <span></span>
+        <span></span>
+      </S.MobileMenuButton>
     </S.StyledHeader>
   );
 };

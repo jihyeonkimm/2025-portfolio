@@ -17,8 +17,12 @@ export const IntroList = styled.ul`
   display: grid;
   grid-template-columns: repeat(3, 1fr);
   align-items: center;
-  gap: 0 20px;
+  gap: 20px;
   margin-top: 60px;
+
+  ${({ theme }) => theme.responsive.mobile} {
+    grid-template-columns: repeat(1, 1fr);
+  }
 `;
 
 export const IntroItem = styled.li<{ $isVisible: boolean }>`
@@ -47,6 +51,10 @@ export const IntroItem = styled.li<{ $isVisible: boolean }>`
       border-color: ${({ theme }) => theme.color.background.gray};
       box-shadow: 0 10px 20px rgba(0, 0, 0, 0.05);
     }
+  }
+
+  ${({ theme }) => theme.responsive.tablet} {
+    padding: 1.5rem;
   }
 `;
 

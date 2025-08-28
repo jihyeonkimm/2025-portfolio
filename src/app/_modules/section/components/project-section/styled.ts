@@ -1,5 +1,5 @@
 import { animation } from '@/app/_common/styles/theme/keyframes';
-import styled from 'styled-components';
+import styled, { keyframes } from 'styled-components';
 
 export const StyledProjectSection = styled.section`
   position: relative;
@@ -26,6 +26,10 @@ export const ProjectItem = styled.li<{ $isVisible: boolean }>`
   }
 
   ${({ $isVisible }) => $isVisible && animation.showElement('0.5s', '0s')}
+
+  ${({ theme }) => theme.responsive.mobile} {
+    width: 100%;
+  }
 `;
 
 export const ProjectItemButton = styled.button`
@@ -34,6 +38,21 @@ export const ProjectItemButton = styled.button`
   flex-direction: column;
   align-items: flex-start;
   width: 100%;
+`;
+
+const imageOverlay = keyframes`
+  0% {
+    width: 0;
+    left: 0;
+  }
+  50% {
+    width: 100%;
+    left: 0;
+  }
+  100% {
+    width: 0;
+    left: 100%;
+  }
 `;
 
 export const ProjectItemImage = styled.span`
@@ -58,22 +77,7 @@ export const ProjectItemImage = styled.span`
     width: 0;
     height: 100%;
     background-color: ${({ theme }) => theme.color.primary.orange};
-    animation: imageOverlay 1s cubic-bezier(0.16, 0.57, 0.76, 0.42) forwards;
-  }
-
-  @keyframes imageOverlay {
-    0% {
-      width: 0;
-      left: 0;
-    }
-    50% {
-      width: 100%;
-      left: 0;
-    }
-    100% {
-      width: 0;
-      left: 100%;
-    }
+    animation: ${imageOverlay} 1s cubic-bezier(0.16, 0.57, 0.76, 0.42) forwards;
   }
 `;
 

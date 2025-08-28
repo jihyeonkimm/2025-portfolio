@@ -5,6 +5,7 @@ import React, { useEffect, useState } from 'react';
 import * as S from './styled';
 import LottieAnimation from '@/app/_common/components/lottie-animation/LottieAnimation';
 import mouse from '@public/assets/lottie/mouse.json';
+import { useIsMobile } from '@/app/hooks/useIsMobile';
 
 interface TextDataProps {
   id: number;
@@ -13,6 +14,7 @@ interface TextDataProps {
 }
 
 const MainSection = () => {
+  const isMobileView = useIsMobile();
   const [firstTagPosition, setFirstTagPosition] = useState<{ x: number; y: number }>({
     x: -30,
     y: 15,
@@ -25,20 +27,32 @@ const MainSection = () => {
 
   const textData: TextDataProps[] = [
     { id: 1, text: 'PROACTIVE ', color: 'orange' },
-    { id: 2, text: 'DEVELOPER, \n' },
-    { id: 3, text: 'COLLABORATIVE ' },
-    { id: 4, text: 'MINDSET', color: 'orange' },
+    { id: 2, text: 'DEVELOPER,' },
+    { id: 3, text: '\n' },
+    { id: 4, text: 'COLLABORATIVE ' },
+    { id: 5, text: 'MINDSET', color: 'orange' },
+  ];
+
+  const mobileTextData: TextDataProps[] = [
+    { id: 1, text: 'PROACTIVE', color: 'orange' },
+    { id: 2, text: '\n' },
+    { id: 3, text: 'DEVELOPER,' },
+    { id: 4, text: '\n' },
+    { id: 5, text: 'COLLABORATIVE' },
+    { id: 6, text: '\n' },
+    { id: 7, text: 'MINDSET', color: 'orange' },
   ];
 
   const createTextArray = () => {
     const textArray: TextDataProps[] = [];
     let textIndex = 0;
+    const selectedTextData = isMobileView ? mobileTextData : textData;
 
-    textData.forEach(({ text, color }) => {
+    selectedTextData.forEach(({ text, color }) => {
       text.split('').forEach((char) => {
         textArray.push({
           id: textIndex++,
-          text: char === ' ' ? '\u00A0' : char === '\n' ? '\n' : char,
+          text: char === ' ' ? '\u00A0' : char,
           color,
         });
       });
@@ -58,6 +72,8 @@ const MainSection = () => {
 
   useEffect(() => {
     const handleMouseMove = (e: MouseEvent) => {
+      if (isMobileView) return;
+
       // firstTag 설정
       const firstBaseX = -30;
       const firstBaseY = 15;
@@ -101,18 +117,11 @@ const MainSection = () => {
 
   return (
     <S.StyledMainContainer>
-      <S.MainTitle>
-        {textArray.map(({ id, text, color }) => (
-          <S.MainTitleText
-            key={`${id}-${text}`}
-            $isPlaying={isPlaying}
-            $color={color}
-            style={{ animationDelay: `${id * 0.05}s` }}
-          >
-            {text}
-          </S.MainTitleText>
-        ))}
-      </S.MainTitle>
+      <S.BlurContainer>
+        <S.Blob className='blob1' />
+        <S.Blob className='blob2' />
+        <S.Blob className='blob3' />
+      </S.BlurContainer>
 
       <S.Tag
         style={{
@@ -122,6 +131,24 @@ const MainSection = () => {
         <S.Dot />
         Front-End Developer
       </S.Tag>
+
+      <S.MainTitle>
+        {textArray.map(({ id, text, color }) => {
+          if (text === '\n') {
+            return <br key={`br-${id}`} />;
+          }
+          return (
+            <S.MainTitleText
+              key={`${id}-${text}`}
+              $isPlaying={isPlaying}
+              $color={color}
+              style={{ animationDelay: `${id * 0.05}s` }}
+            >
+              {text}
+            </S.MainTitleText>
+          );
+        })}
+      </S.MainTitle>
 
       <S.Tag
         style={{
