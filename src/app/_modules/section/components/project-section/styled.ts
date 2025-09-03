@@ -11,8 +11,13 @@ export const ProjectList = styled.ul`
   position: relative;
   display: flex;
   flex-direction: column;
-  gap: 20px;
-  margin-top: 60px;
+  gap: 70px;
+  margin-top: 100px;
+
+  ${({ theme }) => theme.responsive.mobile} {
+    gap: 40px;
+    margin-top: 60px;
+  }
 `;
 
 export const ProjectItem = styled.li<{ $isVisible: boolean }>`
@@ -64,6 +69,10 @@ export const ProjectItemImage = styled.span`
   border-radius: 20px;
   overflow: hidden;
 
+  ${({ theme }) => theme.responsive.mobile} {
+    margin-bottom: 20px;
+  }
+
   & img {
     width: 100%;
   }
@@ -85,6 +94,11 @@ export const ProjectItemTitle = styled.strong`
   font-size: 1.6rem;
   font-weight: 500;
   letter-spacing: -0.5px;
+  text-align: left;
+
+  ${({ theme }) => theme.responsive.mobile} {
+    font-size: 1.2rem;
+  }
 `;
 
 export const ProjectItemTag = styled.span`
@@ -98,6 +112,13 @@ export const ProjectItemTag = styled.span`
   border-radius: 50px;
   background-color: ${({ theme }) => theme.color.common.white};
   overflow: hidden;
+
+  ${({ theme }) => theme.responsive.mobile} {
+    height: 18px;
+    line-height: 18px;
+    padding: 0px 6px;
+    font-size: 0.6rem;
+  }
 `;
 
 export const MoreButton = styled.button`

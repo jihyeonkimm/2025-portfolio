@@ -27,56 +27,61 @@ export const BlurContainer = styled.div`
 `;
 
 const blob1animation = keyframes`
-  0% {top: 20%; left: 100px; transform: scale(1);}
-  30% {top: 30%; left: 150px; transform: scale(1.2);}
-  60% {top: 10%; left: 200px; transform: scale(1.3);}
-  100% {top: 20%; left: 100px; transform: scale(1);}
+  0% {top: 0%; left: 30%; transform: scale(1);}
+  25% {top: 20%; left: 0%; transform: scale(1.2);}
+  50% {top: 40%; left: 30%; transform: scale(1.1);}
+  75% {top: 30%; left: 50%; transform: scale(1);}
+  100% {top: 0%; left: 30%; transform: scale(1);}
 `;
 
 const blob2animation = keyframes`
-  0% {top: 80px; right: -20px; transform: scale(1.2);}
-  30% {top: 300px; right: -20px;transform: scale(1);}
-  60% {top: 200px; right: 100px;transform: scale(1);}
-  100% {top: 80px; right: -20px; transform: scale(1.2);}
+  0% {top: 20%; left: 10%; transform: scale(1);}
+  25% {top: 40%; left: 30%; transform: scale(1);}
+  50% {top: 20%; left: 60%; transform: scale(1.2);}
+  75% {top: 0%; left: 30%; transform: scale(1.1);}
+  100% {top: 20%; left: 10%; transform: scale(1);}
 `;
 
 const blob3animation = keyframes`
-  0% {top: 250px; right: 0px; transform: scale(1);}
-  30% {top: 150px; right: 150px;transform: scale(1.4);}
-  60% {top: 250px; right: 100px;transform: scale(1);}
-  100% {top: 250px; right: 0px; transform: scale(1);}
+  0% {top: 40%; left: 40%; transform: scale(1);}
+  25% {top: 20%; left: 60%; transform: scale(1);}
+  50% {top: 0%; left: 30%; transform: scale(1.1);}
+  75% {top: 20%; left: 0%; transform: scale(1.2);}
+  100% {top: 40%; left: 40%; transform: scale(1);}
 `;
 
 export const Blob = styled.div`
+  width: 40%;
+  height: 40%;
   border-radius: 100px;
   filter: blur(100px);
 
   &.blob1 {
     position: absolute;
-    top: 200px;
-    left: 100px;
-    width: 40%;
-    height: 40%;
-    background-color: orange;
+    top: 0%;
+    left: 30%;
+    background-color: rgb(255, 178, 124);
     animation: ${blob1animation} 8s infinite ease;
   }
   &.blob2 {
     position: absolute;
-    top: 0;
-    left: 0;
-    width: 40%;
-    height: 40%;
-    background-color: yellow;
+    top: 20%;
+    left: 10%;
+    background-color: rgb(255, 251, 125);
     animation: ${blob2animation} 8s infinite ease;
   }
   &.blob3 {
     position: absolute;
-    top: 300px;
-    left: 400px;
-    width: 40%;
-    height: 40%;
-    background-color: pink;
+    top: 40%;
+    left: 40%;
+    background-color: rgb(224, 164, 193);
     animation: ${blob3animation} 8s infinite ease;
+  }
+
+  ${({ theme }) => theme.responsive.mobile} {
+    width: 30%;
+    height: 30%;
+    filter: blur(50px);
   }
 `;
 
@@ -151,7 +156,9 @@ export const Tag = styled.span`
   ${({ theme }) => theme.responsive.mobile} {
     position: relative;
     top: unset;
+    padding: 12px 15px 13px 12px;
     margin: 20px 0;
+    font-size: 1.1rem;
     transform: unset !important;
   }
 `;

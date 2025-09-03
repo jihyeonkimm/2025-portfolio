@@ -5,16 +5,13 @@ import { isMobile } from 'react-device-detect';
 
 export const useIsMobile = (): boolean => {
   const [isMobileView, setIsMobileView] = useState<boolean>(false);
-  const [mounted, setMounted] = useState(false);
 
   useEffect(() => {
-    setMounted(true);
     const checkMobile = () => {
       const isMobileDevice = isMobile || window.innerWidth <= 768;
       setIsMobileView(isMobileDevice);
     };
 
-    // 처음 마운트 시 1회 체크
     checkMobile();
 
     // resize시 너무 자주 발생하지 않게 debounce (100ms)
@@ -35,11 +32,6 @@ export const useIsMobile = (): boolean => {
       window.removeEventListener('resize', handleResize);
     };
   }, []);
-
-  // 서버 사이드에서는 항상 false를 반환
-  if (!mounted) {
-    return false;
-  }
 
   return isMobileView;
 };

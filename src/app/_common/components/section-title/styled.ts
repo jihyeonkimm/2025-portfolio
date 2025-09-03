@@ -9,4 +9,8 @@ export const StyledSectionTitle = styled.h2<{ $isVisible: boolean }>`
   transform: translateY(20px);
 
   ${({ $isVisible }) => $isVisible && animation.showElement('0.5s', '0s')}
+
+  ${({ theme }) => theme.responsive.mobile} {
+    font-size: 2rem;
+  }
 `;

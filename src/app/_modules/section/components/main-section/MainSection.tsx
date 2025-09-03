@@ -13,6 +13,24 @@ interface TextDataProps {
   color?: string;
 }
 
+const textData: TextDataProps[] = [
+  { id: 1, text: 'PROACTIVE ', color: 'orange' },
+  { id: 2, text: 'DEVELOPER,' },
+  { id: 3, text: '\n' },
+  { id: 4, text: 'COLLABORATIVE ' },
+  { id: 5, text: 'MINDSET', color: 'orange' },
+];
+
+const mobileTextData: TextDataProps[] = [
+  { id: 1, text: 'PROACTIVE', color: 'orange' },
+  { id: 2, text: '\n' },
+  { id: 3, text: 'DEVELOPER,' },
+  { id: 4, text: '\n' },
+  { id: 5, text: 'COLLABORATIVE' },
+  { id: 6, text: '\n' },
+  { id: 7, text: 'MINDSET', color: 'orange' },
+];
+
 const MainSection = () => {
   const isMobileView = useIsMobile();
   const [firstTagPosition, setFirstTagPosition] = useState<{ x: number; y: number }>({
@@ -24,24 +42,6 @@ const MainSection = () => {
     y: -15,
   });
   const [isPlaying, setIsPlaying] = useState<boolean>(false);
-
-  const textData: TextDataProps[] = [
-    { id: 1, text: 'PROACTIVE ', color: 'orange' },
-    { id: 2, text: 'DEVELOPER,' },
-    { id: 3, text: '\n' },
-    { id: 4, text: 'COLLABORATIVE ' },
-    { id: 5, text: 'MINDSET', color: 'orange' },
-  ];
-
-  const mobileTextData: TextDataProps[] = [
-    { id: 1, text: 'PROACTIVE', color: 'orange' },
-    { id: 2, text: '\n' },
-    { id: 3, text: 'DEVELOPER,' },
-    { id: 4, text: '\n' },
-    { id: 5, text: 'COLLABORATIVE' },
-    { id: 6, text: '\n' },
-    { id: 7, text: 'MINDSET', color: 'orange' },
-  ];
 
   const createTextArray = () => {
     const textArray: TextDataProps[] = [];
@@ -70,44 +70,43 @@ const MainSection = () => {
     }, 100);
   };
 
+  const handleMouseMove = (event: MouseEvent) => {
+    if (isMobileView) return;
+
+    // firstTag 설정
+    const firstBaseX = -30;
+    const firstBaseY = 15;
+
+    // secondTag 설정
+    const secondBaseX = 30;
+    const secondBaseY = -15;
+
+    // 마우스의 영향 범위
+    const influenceRangeX = 15; // ±15vw
+    const influenceRangeY = 50; // ±10vh
+
+    // 마우스 위치를 0~1 비율로 변환
+    const mouseRatioX = event.clientX / window.innerWidth;
+    const mouseRatioY = event.clientY / window.innerHeight;
+
+    // 마우스 영향을 -1 ~ +1 범위로 변환 (중앙이 0)
+    const mouseInfluenceX = (mouseRatioX - 0.5) * 2;
+    const mouseInfluenceY = (mouseRatioY - 0.5) * 2;
+
+    // firstTag 계산
+    const firstX = firstBaseX + mouseInfluenceX * influenceRangeX * 0.5;
+    const firstY = firstBaseY + mouseInfluenceY * influenceRangeY * 0.3;
+
+    // secondTag 계산
+    const secondX = secondBaseX - mouseInfluenceX * influenceRangeX * 0.5;
+    const secondY = secondBaseY - mouseInfluenceY * influenceRangeY * 0.3;
+
+    setFirstTagPosition({ x: firstX, y: firstY });
+    setSecondTagPosition({ x: secondX, y: secondY });
+  };
+
   useEffect(() => {
-    const handleMouseMove = (e: MouseEvent) => {
-      if (isMobileView) return;
-
-      // firstTag 설정
-      const firstBaseX = -30;
-      const firstBaseY = 15;
-
-      // secondTag 설정
-      const secondBaseX = 30;
-      const secondBaseY = -15;
-
-      // 마우스의 영향 범위
-      const influenceRangeX = 15; // ±15vw
-      const influenceRangeY = 50; // ±10vh
-
-      // 마우스 위치를 0~1 비율로 변환
-      const mouseRatioX = e.clientX / window.innerWidth;
-      const mouseRatioY = e.clientY / window.innerHeight;
-
-      // 마우스 영향을 -1 ~ +1 범위로 변환 (중앙이 0)
-      const mouseInfluenceX = (mouseRatioX - 0.5) * 2;
-      const mouseInfluenceY = (mouseRatioY - 0.5) * 2;
-
-      // firstTag 계산
-      const firstX = firstBaseX + mouseInfluenceX * influenceRangeX * 0.5;
-      const firstY = firstBaseY + mouseInfluenceY * influenceRangeY * 0.3;
-
-      // secondTag 계산
-      const secondX = secondBaseX - mouseInfluenceX * influenceRangeX * 0.5;
-      const secondY = secondBaseY - mouseInfluenceY * influenceRangeY * 0.3;
-
-      setFirstTagPosition({ x: firstX, y: firstY });
-      setSecondTagPosition({ x: secondX, y: secondY });
-    };
-
     document.addEventListener('mousemove', handleMouseMove);
-
     playAnimation();
 
     return () => {
@@ -125,7 +124,9 @@ const MainSection = () => {
 
       <S.Tag
         style={{
-          transform: `translate3d(${firstTagPosition.x}vw, ${firstTagPosition.y}vh, 0px)`,
+          transform: isMobileView
+            ? 'unset'
+            : `translate3d(${firstTagPosition.x}vw, ${firstTagPosition.y}vh, 0px)`,
         }}
       >
         <S.Dot />
@@ -152,7 +153,9 @@ const MainSection = () => {
 
       <S.Tag
         style={{
-          transform: `translate3d(${secondTagPosition.x}vw, ${secondTagPosition.y}vh, 0px)`,
+          transform: isMobileView
+            ? 'unset'
+            : `translate3d(${secondTagPosition.x}vw, ${secondTagPosition.y}vh, 0px)`,
         }}
       >
         <S.Dot />

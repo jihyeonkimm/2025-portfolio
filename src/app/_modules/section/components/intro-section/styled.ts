@@ -11,6 +11,10 @@ export const IntroText = styled.p`
   color: ${({ theme }) => theme.color.primary.gray};
   font-size: 1.4rem;
   letter-spacing: -0.5px;
+
+  ${({ theme }) => theme.responsive.mobile} {
+    font-size: 1rem;
+  }
 `;
 
 export const IntroList = styled.ul`
@@ -22,6 +26,7 @@ export const IntroList = styled.ul`
 
   ${({ theme }) => theme.responsive.mobile} {
     grid-template-columns: repeat(1, 1fr);
+    margin-top: 30px;
   }
 `;
 
@@ -56,12 +61,20 @@ export const IntroItem = styled.li<{ $isVisible: boolean }>`
   ${({ theme }) => theme.responsive.tablet} {
     padding: 1.5rem;
   }
+
+  ${({ theme }) => theme.responsive.mobile} {
+    padding: 1.2rem;
+  }
 `;
 
 export const IntroItemTitle = styled.strong`
   font-size: 1.4rem;
   line-height: 120%;
   letter-spacing: -0.5px;
+
+  ${({ theme }) => theme.responsive.mobile} {
+    font-size: 1.3rem;
+  }
 `;
 
 export const IntroItemText = styled.p`
@@ -70,6 +83,10 @@ export const IntroItemText = styled.p`
   font-size: 1rem;
   line-height: 140%;
   letter-spacing: -0.5px;
+
+  ${({ theme }) => theme.responsive.mobile} {
+    font-size: 0.9rem;
+  }
 `;
 
 export const IntroItemIcon = styled.span`
@@ -77,4 +94,8 @@ export const IntroItemIcon = styled.span`
   width: 40px;
   height: 40px;
   margin-bottom: 60px;
+
+  ${({ theme }) => theme.responsive.mobile} {
+    margin-bottom: 40px;
+  }
 `;

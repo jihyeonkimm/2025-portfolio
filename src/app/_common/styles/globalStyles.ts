@@ -12,7 +12,7 @@ const GlobalStyle = createGlobalStyle`
 		font-family: 'Pretendard', sans-serif;
 	}
 
-	body {
+	html, body {
 		color: #111;
 		font-size: 62.5%;
 		font-family: 'Pretendard', sans-serif;
