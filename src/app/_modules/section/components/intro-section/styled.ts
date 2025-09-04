@@ -9,11 +9,11 @@ export const StyledIntroSection = styled.section`
 export const IntroText = styled.p`
   margin-top: 20px;
   color: ${({ theme }) => theme.color.primary.gray};
-  font-size: 1.4rem;
+  font-size: 2rem;
   letter-spacing: -0.5px;
 
   ${({ theme }) => theme.responsive.mobile} {
-    font-size: 1rem;
+    font-size: 1.6rem;
   }
 `;
 
@@ -68,24 +68,24 @@ export const IntroItem = styled.li<{ $isVisible: boolean }>`
 `;
 
 export const IntroItemTitle = styled.strong`
-  font-size: 1.4rem;
+  font-size: 2rem;
   line-height: 120%;
   letter-spacing: -0.5px;
 
   ${({ theme }) => theme.responsive.mobile} {
-    font-size: 1.3rem;
+    font-size: 1.8rem;
   }
 `;
 
 export const IntroItemText = styled.p`
   margin-top: 18px;
   color: ${({ theme }) => theme.color.primary.gray};
-  font-size: 1rem;
+  font-size: 1.4rem;
   line-height: 140%;
   letter-spacing: -0.5px;
 
   ${({ theme }) => theme.responsive.mobile} {
-    font-size: 0.9rem;
+    font-size: 1.2rem;
   }
 `;
 

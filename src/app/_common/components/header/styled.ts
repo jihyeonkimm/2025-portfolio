@@ -56,12 +56,19 @@ export const MenuList = styled.ul`
   }
 `;
 
-export const MenuItem = styled.li`
-  color: ${({ theme }) => theme.color.common.black};
-  font-size: 1.2rem;
+export const MenuItem = styled.li<{ $isActive?: boolean }>`
+  color: ${({ theme, $isActive }) => 
+    $isActive ? theme.color.primary.orange : theme.color.common.black};
+  font-size: 1.6rem;
   line-height: 30px;
   padding: 0px 10px;
   border-radius: 40px;
+  cursor: pointer;
+  transition: color 0.2s ease;
+
+  &:hover {
+    color: ${({ theme }) => theme.color.primary.orange};
+  }
 `;
 
 export const MobileMenuButton = styled.button`

@@ -115,7 +115,7 @@ const MainSection = () => {
   }, []);
 
   return (
-    <S.StyledMainContainer>
+    <S.StyledMainContainer id="home">
       <S.BlurContainer>
         <S.Blob className='blob1' />
         <S.Blob className='blob2' />

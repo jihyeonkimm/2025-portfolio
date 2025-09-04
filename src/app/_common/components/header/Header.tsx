@@ -5,7 +5,21 @@ import * as S from './styled';
 import Image from 'next/image';
 import Link from 'next/link';
 
-const Header = () => {
+type SectionId = 'home' | 'about' | 'projects' | 'contact';
+
+interface HeaderProps {
+  activeSection: SectionId;
+  onNavigate: (sectionId: SectionId) => void;
+}
+
+const MENU_ITEMS: { id: SectionId; label: string }[] = [
+  { id: 'home', label: 'Home' },
+  { id: 'about', label: 'About' },
+  { id: 'projects', label: 'Projects' },
+  { id: 'contact', label: 'Contact' },
+];
+
+const Header = ({ activeSection, onNavigate }: HeaderProps) => {
   return (
     <S.StyledHeader>
       <S.Logo>
@@ -14,10 +28,15 @@ const Header = () => {
         </Link>
       </S.Logo>
       <S.MenuList>
-        <S.MenuItem>Home</S.MenuItem>
-        <S.MenuItem>About</S.MenuItem>
-        <S.MenuItem>Projects</S.MenuItem>
-        <S.MenuItem>Contact</S.MenuItem>
+        {MENU_ITEMS.map((item) => (
+          <S.MenuItem 
+            key={item.id}
+            $isActive={activeSection === item.id}
+            onClick={() => onNavigate(item.id)}
+          >
+            {item.label}
+          </S.MenuItem>
+        ))}
       </S.MenuList>
       <S.MobileMenuButton type='button'>
         <span></span>

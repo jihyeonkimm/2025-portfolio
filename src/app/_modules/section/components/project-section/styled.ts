@@ -91,13 +91,13 @@ export const ProjectItemImage = styled.span`
 `;
 
 export const ProjectItemTitle = styled.strong`
-  font-size: 1.6rem;
+  font-size: 2.2rem;
   font-weight: 500;
   letter-spacing: -0.5px;
   text-align: left;
 
   ${({ theme }) => theme.responsive.mobile} {
-    font-size: 1.2rem;
+    font-size: 1.6rem;
   }
 `;
 
@@ -117,7 +117,7 @@ export const ProjectItemTag = styled.span`
     height: 18px;
     line-height: 18px;
     padding: 0px 6px;
-    font-size: 0.6rem;
+    font-size: 1rem;
   }
 `;
 

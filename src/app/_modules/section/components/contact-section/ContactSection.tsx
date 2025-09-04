@@ -7,7 +7,7 @@ import SectionTitle from '@/app/_common/components/section-title/SectionTitle';
 
 const ContactSection = () => {
   return (
-    <S.StyledContactSection>
+    <S.StyledContactSection id="contact">
       <Inner>
         <SectionTitle title='Contact' />
         <S.ContactContainer>

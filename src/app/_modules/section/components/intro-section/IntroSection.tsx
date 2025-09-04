@@ -51,7 +51,7 @@ const IntroItem = ({ item }: { item: DataProps }) => {
 
 const IntroSection = () => {
   return (
-    <S.StyledIntroSection>
+    <S.StyledIntroSection id="about">
       <Inner>
         <SectionTitle title='About' />
         <S.IntroText>적극적으로 개발하고 협업 중심으로 사고합니다.</S.IntroText>

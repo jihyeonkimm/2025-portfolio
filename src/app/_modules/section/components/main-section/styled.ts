@@ -87,18 +87,18 @@ export const Blob = styled.div`
 
 export const MainTitle = styled.h2`
   position: relative;
-  font-size: 5rem;
+  font-size: 8rem;
   font-weight: 700;
   text-align: center;
   letter-spacing: -1px;
   white-space: pre-wrap;
 
   ${({ theme }) => theme.responsive.tablet} {
-    font-size: 4rem;
+    font-size: 5rem;
   }
 
   ${({ theme }) => theme.responsive.mobile} {
-    font-size: 2.6rem;
+    font-size: 4rem;
     line-height: 110%;
   }
 `;
@@ -141,14 +141,14 @@ export const Tag = styled.span`
   backdrop-filter: blur(18px);
   background-color: #fff6;
   border-radius: 40px;
-  font-size: 1.4rem;
+  font-size: 2rem;
   opacity: 0;
   z-index: 1;
 
   animation: ${showTag} 0.5s 2.8s forwards;
 
   ${({ theme }) => theme.responsive.tablet} {
-    font-size: 1.2rem;
+    font-size: 1.6rem;
     padding: 15px 18px 14px 13px;
     gap: 0 8px;
   }
@@ -158,7 +158,7 @@ export const Tag = styled.span`
     top: unset;
     padding: 12px 15px 13px 12px;
     margin: 20px 0;
-    font-size: 1.1rem;
+    font-size: 1.2rem;
     transform: unset !important;
   }
 `;

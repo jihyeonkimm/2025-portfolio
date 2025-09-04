@@ -9,6 +9,10 @@ export const ContactContainer = styled.div`
   display: flex;
   justify-content: flex-end;
   padding-right: 20vw;
+
+  ${({ theme }) => theme.responsive.mobile} {
+    padding-right: 0;
+  }
 `;
 
 export const ContactList = styled.ul`
@@ -25,14 +29,14 @@ export const ContactItem = styled.li`
 `;
 
 export const ContactItemTitle = styled.strong`
-  font-size: 1.4rem;
+  font-size: 2.4rem;
   font-weight: 500;
   letter-spacing: -0.5px;
 `;
 
 export const ContactLink = styled(Link)`
   color: ${({ theme }) => theme.color.primary.gray};
-  font-size: 1.2rem;
+  font-size: 1.6rem;
   letter-spacing: -0.5px;
   transition: 0.3s;
 

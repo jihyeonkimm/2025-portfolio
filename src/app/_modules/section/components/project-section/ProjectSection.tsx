@@ -45,7 +45,7 @@ const ProjectItem = ({ item }: { item: DataProps }) => {
 
 const ProjectSection = () => {
   return (
-    <S.StyledProjectSection>
+    <S.StyledProjectSection id="projects">
       <Inner>
         <SectionTitle title='Projects' />
         {data.length > 0 && (
