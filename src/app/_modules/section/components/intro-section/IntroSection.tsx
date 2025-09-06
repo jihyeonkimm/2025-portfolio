@@ -8,7 +8,7 @@ import Inner from '@/app/_common/components/inner/Inner';
 import { IntroIcon01 } from '@/app/_common/assets/icons/components/index';
 import { IntroIcon02 } from '@/app/_common/assets/icons/components/index';
 import { IntroIcon03 } from '@/app/_common/assets/icons/components/index';
-import introDataJson from '@/data/introData.json';
+import introDataJson from '@/app/data/introData.json';
 import useScroll from '@/app/hooks/useScroll';
 
 interface DataProps {
@@ -51,7 +51,7 @@ const IntroItem = ({ item }: { item: DataProps }) => {
 
 const IntroSection = () => {
   return (
-    <S.StyledIntroSection id="about">
+    <S.StyledIntroSection id='about'>
       <Inner>
         <SectionTitle title='About' />
         <S.IntroText>적극적으로 개발하고 협업 중심으로 사고합니다.</S.IntroText>

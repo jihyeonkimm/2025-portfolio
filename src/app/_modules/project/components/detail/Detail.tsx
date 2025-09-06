@@ -1,8 +1,16 @@
+'use client';
+
 import React from 'react';
 import { useProjects } from '../../hooks/useProjects';
 
-const Detail = () => {
+interface ProjectDetailProps {
+  projectName: string;
+}
+
+const ProjectDetail = ({ projectName }: ProjectDetailProps) => {
   const { projects } = useProjects();
+
+  console.log(projects);
 
   return (
     <div>
@@ -10,6 +18,7 @@ const Detail = () => {
         <div>
           {projects.map((project) => (
             <div key={project.id}>
+              <p>{projectName}</p>
               <p>{project.title}</p>
               <p>{project.description}</p>
             </div>
@@ -20,4 +29,4 @@ const Detail = () => {
   );
 };
 
-export default Detail;
+export default ProjectDetail;

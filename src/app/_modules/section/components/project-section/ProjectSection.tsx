@@ -4,13 +4,15 @@ import React from 'react';
 import * as S from './styled';
 import Inner from '@/app/_common/components/inner/Inner';
 import SectionTitle from '@/app/_common/components/section-title/SectionTitle';
-import projectListData from '@/data/projectListData.json';
 import Image from 'next/image';
 import useScroll from '@/app/hooks/useScroll';
+import projectListData from '@/app/data/projectListData.json';
+import { useRouter } from 'next/navigation';
 
 interface DataProps {
   id: number;
   title: string;
+  projectName: string;
   period: string;
   thumbnail: string;
 }
@@ -25,6 +27,7 @@ const ProjectItem = ({ item }: { item: DataProps }) => {
     rootMargin: '-50px',
     triggerOnce: true,
   });
+  const router = useRouter();
 
   return (
     <S.ProjectItem
@@ -32,8 +35,11 @@ const ProjectItem = ({ item }: { item: DataProps }) => {
       ref={elementRef as React.RefObject<HTMLLIElement>}
       $isVisible={isVisible}
     >
-      <S.ProjectItemButton type='button'>
-        <S.ProjectItemImage>
+      <S.ProjectItemButton
+        type='button'
+        onClick={() => router.push(`/project/${item.projectName}`)}
+      >
+        <S.ProjectItemImage $isVisible={isVisible}>
           <Image src={item.thumbnail} alt='project thumbnail' fill sizes='100%' />
         </S.ProjectItemImage>
         <S.ProjectItemTitle>{item.title}</S.ProjectItemTitle>
@@ -45,7 +51,7 @@ const ProjectItem = ({ item }: { item: DataProps }) => {
 
 const ProjectSection = () => {
   return (
-    <S.StyledProjectSection id="projects">
+    <S.StyledProjectSection id='projects'>
       <Inner>
         <SectionTitle title='Projects' />
         {data.length > 0 && (
@@ -55,7 +61,7 @@ const ProjectSection = () => {
             ))}
           </S.ProjectList>
         )}
-        <S.MoreButton type='button'>더보기</S.MoreButton>
+        {/* <S.MoreButton type='button'>더보기</S.MoreButton> */}
       </Inner>
     </S.StyledProjectSection>
   );

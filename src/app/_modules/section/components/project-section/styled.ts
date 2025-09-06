@@ -1,9 +1,9 @@
 import { animation } from '@/app/_common/styles/theme/keyframes';
-import styled, { keyframes } from 'styled-components';
+import styled, { css, keyframes } from 'styled-components';
 
 export const StyledProjectSection = styled.section`
   position: relative;
-  padding: 4rem 0;
+  padding: 10rem 0;
   background-color: ${({ theme }) => theme.color.background.gray};
 `;
 
@@ -12,7 +12,7 @@ export const ProjectList = styled.ul`
   display: flex;
   flex-direction: column;
   gap: 70px;
-  margin-top: 100px;
+  margin: 10rem 0;
 
   ${({ theme }) => theme.responsive.mobile} {
     gap: 40px;
@@ -47,10 +47,6 @@ export const ProjectItemButton = styled.button`
 
 const imageOverlay = keyframes`
   0% {
-    width: 0;
-    left: 0;
-  }
-  50% {
     width: 100%;
     left: 0;
   }
@@ -60,7 +56,7 @@ const imageOverlay = keyframes`
   }
 `;
 
-export const ProjectItemImage = styled.span`
+export const ProjectItemImage = styled.span<{ $isVisible: boolean }>`
   position: relative;
   display: block;
   width: 100%;
@@ -86,7 +82,12 @@ export const ProjectItemImage = styled.span`
     width: 0;
     height: 100%;
     background-color: ${({ theme }) => theme.color.primary.orange};
-    animation: ${imageOverlay} 1s cubic-bezier(0.16, 0.57, 0.76, 0.42) forwards;
+
+    ${({ $isVisible }) =>
+      $isVisible &&
+      css`
+        animation: ${imageOverlay} 1s cubic-bezier(0.16, 0.57, 0.76, 0.42) forwards;
+      `}
   }
 `;
 
@@ -125,6 +126,7 @@ export const MoreButton = styled.button`
   display: flex;
   justify-content: center;
   align-items: center;
+  margin: 0 auto;
   line-height: 22px;
   padding: 0px 10px;
   border: 1px solid ${({ theme }) => theme.color.common.black};
