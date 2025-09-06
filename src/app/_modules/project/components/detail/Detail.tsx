@@ -58,7 +58,7 @@ const ProjectDetail = ({ projectName }: ProjectDetailProps) => {
                     <S.SkillImageContainer key={`${index}-${skill}`}>
                       <Image
                         src={`/assets/images/skills-logo/${
-                          skill === 'Next.js' ? 'next' : skill === 'React Native' ? 'react' : skill
+                          skill === 'next.js' ? 'next' : skill === 'react native' ? 'react' : skill
                         }.png`}
                         alt='기술 스택 로고'
                         fill

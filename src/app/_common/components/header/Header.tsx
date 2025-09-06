@@ -1,9 +1,10 @@
 'use client';
 
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import * as S from './styled';
 import Image from 'next/image';
 import Link from 'next/link';
+import { useIsMobile } from '@/app/hooks/useIsMobile';
 
 type SectionId = 'home' | 'about' | 'projects' | 'contact';
 
@@ -20,6 +21,18 @@ const MENU_ITEMS: { id: SectionId; label: string }[] = [
 ];
 
 const Header = ({ activeSection, onNavigate }: HeaderProps) => {
+  const [isMobileMenuOpen, setIsMobileMenuOpen] = useState<boolean>(false);
+  const isMobileView = useIsMobile();
+
+  useEffect(() => {
+    if (isMobileMenuOpen) {
+      document.body.style.overflow = 'hidden';
+    }
+    return () => {
+      document.body.style.overflow = '';
+    };
+  }, [isMobileMenuOpen]);
+
   return (
     <S.StyledHeader>
       <S.Logo>
@@ -29,7 +42,7 @@ const Header = ({ activeSection, onNavigate }: HeaderProps) => {
       </S.Logo>
       <S.MenuList>
         {MENU_ITEMS.map((item) => (
-          <S.MenuItem 
+          <S.MenuItem
             key={item.id}
             $isActive={activeSection === item.id}
             onClick={() => onNavigate(item.id)}
@@ -38,11 +51,31 @@ const Header = ({ activeSection, onNavigate }: HeaderProps) => {
           </S.MenuItem>
         ))}
       </S.MenuList>
-      <S.MobileMenuButton type='button'>
-        <span></span>
-        <span></span>
-        <span></span>
+      <S.MobileMenuButton
+        type='button'
+        onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
+        $isMobileMenuOpen={isMobileMenuOpen}
+      >
+        <S.MenuLine $isMobileMenuOpen={isMobileMenuOpen} />
+        <S.MenuLine $isMobileMenuOpen={isMobileMenuOpen} />
+        <S.MenuLine $isMobileMenuOpen={isMobileMenuOpen} />
       </S.MobileMenuButton>
+
+      {isMobileView && isMobileMenuOpen && (
+        <S.MobileMenuContainer>
+          <S.MobileMenuList>
+            {MENU_ITEMS.map((item) => (
+              <S.MenuItem
+                key={item.id}
+                $isActive={activeSection === item.id}
+                onClick={() => onNavigate(item.id)}
+              >
+                {item.label}
+              </S.MenuItem>
+            ))}
+          </S.MobileMenuList>
+        </S.MobileMenuContainer>
+      )}
     </S.StyledHeader>
   );
 };

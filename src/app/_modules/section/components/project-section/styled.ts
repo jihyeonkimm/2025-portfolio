@@ -93,6 +93,7 @@ export const ProjectItemImage = styled.span<{ $isVisible: boolean }>`
 `;
 
 export const ProjectItemTitle = styled.strong`
+  color: ${({ theme }) => theme.color.common.black};
   font-size: 2.2rem;
   font-weight: 500;
   letter-spacing: -0.5px;
@@ -110,6 +111,7 @@ export const ProjectItemTag = styled.span`
   margin-top: 10px;
   line-height: 22px;
   padding: 0px 10px;
+  color: ${({ theme }) => theme.color.common.black};
   border: 1px solid ${({ theme }) => theme.color.common.black};
   border-radius: 50px;
   background-color: ${({ theme }) => theme.color.common.white};
