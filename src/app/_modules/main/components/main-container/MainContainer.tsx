@@ -7,6 +7,7 @@ import MainSection from '@/app/_modules/section/components/main-section/MainSect
 import IntroSection from '@/app/_modules/section/components/intro-section/IntroSection';
 import ProjectSection from '@/app/_modules/section/components/project-section/ProjectSection';
 import ContactSection from '@/app/_modules/section/components/contact-section/ContactSection';
+import Loader from '@/app/_common/components/loader/Loader';
 
 const MainContainer = () => {
   const [isLoading, setIsLoading] = useState<boolean>(false);
@@ -26,7 +27,7 @@ const MainContainer = () => {
   }, []);
 
   if (!isLoading) {
-    return <div>Loading....</div>;
+    return <Loader />;
   }
 
   return (
