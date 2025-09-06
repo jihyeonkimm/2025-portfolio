@@ -43,6 +43,7 @@ export const ProjectItemButton = styled.button`
   flex-direction: column;
   align-items: flex-start;
   width: 100%;
+  cursor: pointer;
 `;
 
 const imageOverlay = keyframes`

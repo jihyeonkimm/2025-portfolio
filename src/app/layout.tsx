@@ -3,18 +3,17 @@ import StyledComponentsRegistry from './lib/registry';
 import GlobalStyle from './_common/styles/globalStyles';
 import ClientThemeProvider from './lib/ThemeProvider';
 
+interface RootLayoutProps {
+  children: React.ReactNode;
+  modal: React.ReactNode;
+}
+
 export const metadata: Metadata = {
   title: 'Jihyeon Kim Portfolio',
   description: 'Jihyeon Kim Portfolio',
 };
 
-export default function RootLayout({
-  children,
-  modal,
-}: Readonly<{
-  children: React.ReactNode;
-  modal: React.ReactNode;
-}>) {
+export default function RootLayout({ children, modal }: RootLayoutProps) {
   return (
     <html lang='ko'>
       <body>

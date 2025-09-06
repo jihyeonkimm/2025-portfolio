@@ -4,7 +4,17 @@ interface Project {
   id: string;
   title: string;
   description: string;
-  // 추가 필드들...
+  projectName: string;
+  duration: string;
+  participants: string;
+  skills: string[];
+  details: [
+    {
+      title: string;
+      description?: string[];
+    },
+  ];
+  link?: string;
 }
 
 export const useProjects = () => {
