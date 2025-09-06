@@ -7,7 +7,7 @@ import SectionTitle from '@/app/_common/components/section-title/SectionTitle';
 
 const ContactSection = () => {
   return (
-    <S.StyledContactSection id="contact">
+    <S.StyledContactSection id='contact'>
       <Inner>
         <SectionTitle title='Contact' />
         <S.ContactContainer>
@@ -18,7 +18,10 @@ const ContactSection = () => {
             </S.ContactItem>
             <S.ContactItem>
               <S.ContactItemTitle>More About</S.ContactItemTitle>
-              <S.ContactLink href='' target='_blank'>
+              <S.ContactLink
+                href='https://drive.google.com/file/d/1ry_htjHyPM42bOyjp1PJdeqDKlq0bXmt/view?usp=sharing'
+                target='_blank'
+              >
                 CV
               </S.ContactLink>
               <S.ContactLink href='https://jh-log.tistory.com/' target='_blank'>
