@@ -3,7 +3,6 @@ import styled from 'styled-components';
 export const ProjectDetailContainer = styled.div`
   width: 100%;
   max-width: 960px;
-  margin: 20px 0;
   padding: 20px;
   background-color: ${({ theme }) => theme.color.common.white};
 

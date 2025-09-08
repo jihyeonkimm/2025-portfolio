@@ -95,8 +95,8 @@ export const IntroItemText = styled.p`
 
 export const IntroItemIcon = styled.span`
   display: block;
-  width: 40px;
-  height: 40px;
+  width: 50px;
+  height: 50px;
   margin-bottom: 60px;
 
   ${({ theme }) => theme.responsive.mobile} {

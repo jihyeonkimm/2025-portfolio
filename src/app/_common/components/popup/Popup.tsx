@@ -28,7 +28,7 @@ const Popup = ({ children, onClose, isOpen }: PopupProps) => {
         <S.CloseButton type='button' onClick={onClose}>
           <IconClose />
         </S.CloseButton>
-        {children}
+        <S.PopupChildrenContainer>{children}</S.PopupChildrenContainer>
       </S.PopupContainer>
     </S.Overlay>
   );

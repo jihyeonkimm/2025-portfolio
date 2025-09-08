@@ -2,8 +2,8 @@ import * as React from 'react';
 const SvgIntroIcon02 = (props) => (
   <svg
     xmlns='http://www.w3.org/2000/svg'
-    width={40}
-    height={40}
+    width={'100%'}
+    height={'100%'}
     fill='#f74932'
     viewBox='0 -960 960 960'
     {...props}

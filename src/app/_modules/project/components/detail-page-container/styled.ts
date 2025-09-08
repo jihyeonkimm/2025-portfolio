@@ -3,6 +3,7 @@ import styled from 'styled-components';
 export const StyledPageContainer = styled.div`
   max-width: 960px;
   margin: 0 auto;
+  padding: 7rem 0;
 
   ${({ theme }) => theme.responsive.mobile} {
     padding: 70px 20px;

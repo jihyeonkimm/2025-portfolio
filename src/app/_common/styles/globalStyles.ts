@@ -16,6 +16,17 @@ const GlobalStyle = createGlobalStyle`
 		color: #111;
 		font-size: 62.5%;
 		font-family: 'Pretendard', sans-serif;
+
+		::-webkit-scrollbar {
+			width: 5px;
+			background-color: transparent;
+		}
+		
+		::-webkit-scrollbar-thumb {	
+			width: 5px;
+			background-color: ${({ theme }) => theme.color.primary.lightgray};
+			border-radius: 10px;
+		}
 	}
 
 	button {

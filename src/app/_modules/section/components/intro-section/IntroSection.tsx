@@ -29,21 +29,17 @@ const data: DataProps[] = introDataJson.map((item) => ({
   icon: iconMap[item.icon as keyof typeof iconMap],
 }));
 
-const IntroItem = ({ 
-  item, 
-  elementRef, 
-  isVisible 
-}: { 
+const IntroItem = ({
+  item,
+  elementRef,
+  isVisible,
+}: {
   item: DataProps;
   elementRef: React.RefObject<HTMLLIElement>;
   isVisible: boolean;
 }) => {
   return (
-    <S.IntroItem
-      key={item.id}
-      ref={elementRef}
-      $isVisible={isVisible}
-    >
+    <S.IntroItem key={item.id} ref={elementRef} $isVisible={isVisible}>
       <S.IntroItemIcon>{item.icon}</S.IntroItemIcon>
       <S.IntroItemTitle>{item.title}</S.IntroItemTitle>
       <S.IntroItemText>{item.description}</S.IntroItemText>
@@ -76,8 +72,8 @@ const IntroSection = () => {
         </S.IntroText>
         <S.IntroList>
           {data.map((item, index) => (
-            <IntroItem 
-              item={item} 
+            <IntroItem
+              item={item}
               key={item.id}
               elementRef={scrollRefs[index]?.elementRef as React.RefObject<HTMLLIElement>}
               isVisible={scrollRefs[index]?.isVisible || false}

@@ -21,16 +21,24 @@ export const PopupContainer = styled.div`
   max-width: 960px;
   height: calc(100dvh - 80px);
   max-height: 90vh;
-  padding: 20px;
+  padding: 20px 10px 20px 20px;
   background-color: ${({ theme }) => theme.color.common.white};
   border-radius: 20px;
-  overflow: auto;
+  overflow: hidden;
+`;
+
+export const PopupChildrenContainer = styled.div`
+  width: 100%;
+  height: calc(100% - 40px);
+  padding: 0 10px 20px 0;
+  overflow-y: auto;
 `;
 
 export const CloseButton = styled.button`
   position: sticky;
-  top: 20px;
+  top: 10px;
   left: 100%;
+  margin-right: 15px;
   cursor: pointer;
   z-index: 1001;
 
