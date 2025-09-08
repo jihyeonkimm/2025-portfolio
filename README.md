@@ -1,36 +1,70 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# 🚀 Jihyeon Kim Portfolio
 
-## Getting Started
+프론트엔드 개발자 김지현의 포트폴리오 웹사이트입니다.
 
-First, run the development server:
+## 🛠 기술 스택
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
+- **Frontend**: Next.js 15, React 19, TypeScript
+- **Styling**: Styled Components
+- **Database**: Firebase Firestore
+- **Deployment**: Vercel
+- **Other**: Lottie React, React Device Detect
+
+## ✨ 주요 기능
+
+### 🏠 메인 섹션
+
+- 인터랙티브한 텍스트 애니메이션
+- 반응형 디자인으로 모바일 최적화
+
+### 👤 About 섹션
+
+- 스크롤 기반 애니메이션
+- 자기소개 및 핵심 가치 표현
+
+### 💼 Projects 섹션
+
+- **Intercept Route 모달**: Next.js App Router의 intercepting routes를 활용한 프로젝트 상세 모달
+- **동적 이미지 로딩**: 기술 스택별 로고 자동 매칭
+- **Firebase 연동**: 실시간 프로젝트 데이터 관리
+
+### 📱 반응형 디자인
+
+- 모바일 최적화 네비게이션
+- 디바이스별 최적화된 UI/UX
+
+## 🏗 프로젝트 구조
+
+```
+src/
+├── app/
+│   ├── @modal/                    # Parallel routes for modals
+│   ├── _common/                   # 공통 컴포넌트
+│   │   ├── components/            # 재사용 가능한 컴포넌트
+│   │   └── assets/               # 아이콘, 이미지 등
+│   ├── _modules/                 # 페이지별 모듈
+│   │   ├── section/              # 섹션 컴포넌트
+│   │   └── project/              # 프로젝트 관련 컴포넌트
+│   ├── api/                      # API Routes
+│   ├── hooks/                    # 커스텀 훅
+│   └── data/                     # 정적 데이터
+└── lib/                          # 라이브러리 설정
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+## 📱 반응형 디자인
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+- **Desktop**: 1200px 이상
+- **Tablet**: 768px - 1199px
+- **Mobile**: 767px 이하
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+모든 디바이스에서 최적화된 사용자 경험을 제공합니다.
 
-## Learn More
+## 🎨 디자인 시스템
 
-To learn more about Next.js, take a look at the following resources:
+- **Typography**: 가독성을 고려한 폰트 시스템
+- **Color Scheme**: 브랜드 아이덴티티를 반영한 컬러 팔레트
+- **Animation**: 사용자 경험을 향상시키는 자연스러운 애니메이션
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+---
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
-
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+**Built with ❤️ by Jihyeon Kim**
