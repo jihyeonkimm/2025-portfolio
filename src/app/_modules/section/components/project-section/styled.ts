@@ -72,6 +72,8 @@ export const ProjectItemImage = styled.span<{ $isVisible: boolean }>`
 
   & img {
     width: 100%;
+    transform-origin: center;
+    transition: 0.3s;
   }
 
   &::after {
@@ -80,15 +82,21 @@ export const ProjectItemImage = styled.span<{ $isVisible: boolean }>`
     position: absolute;
     top: 0;
     left: 0;
-    width: 0;
+    width: 100%;
     height: 100%;
     background-color: ${({ theme }) => theme.color.primary.orange};
 
     ${({ $isVisible }) =>
       $isVisible &&
       css`
-        animation: ${imageOverlay} 1s cubic-bezier(0.16, 0.57, 0.76, 0.42) forwards;
+        animation: ${imageOverlay} 1s 0.3s cubic-bezier(0.16, 0.57, 0.76, 0.42) forwards;
       `}
+  }
+
+  @media (hover: hover) {
+    &:hover > img {
+      transform: scale(1.05);
+    }
   }
 `;
 
@@ -104,9 +112,16 @@ export const ProjectItemTitle = styled.strong`
   }
 `;
 
-export const ProjectItemTag = styled.span`
+export const ProjectTagText = styled.p`
+  white-space: nowrap;
+  transform: translateY(-20px);
+  transition: 0.5s;
+  transition-delay: 1.8s;
+`;
+
+export const ProjectItemTag = styled.span<{ $isVisible: boolean }>`
   display: inline-block;
-  /* max-width: 22px; */
+  max-width: ${({ $isVisible }) => ($isVisible ? '500px' : '10px')};
   height: 22px;
   margin-top: 10px;
   line-height: 22px;
@@ -116,6 +131,12 @@ export const ProjectItemTag = styled.span`
   border-radius: 50px;
   background-color: ${({ theme }) => theme.color.common.white};
   overflow: hidden;
+  transition: 0.8s;
+  transition-delay: 1s;
+
+  & ${ProjectTagText} {
+    transform: ${({ $isVisible }) => ($isVisible ? 'translateY(0px)' : 'translateY(-20px)')};
+  }
 
   ${({ theme }) => theme.responsive.mobile} {
     height: 18px;

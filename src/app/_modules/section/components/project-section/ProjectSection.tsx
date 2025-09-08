@@ -43,7 +43,12 @@ const ProjectItem = ({ item }: { item: DataProps }) => {
           <Image src={item.thumbnail} alt='project thumbnail' fill sizes='100%' />
         </S.ProjectItemImage>
         <S.ProjectItemTitle>{item.title}</S.ProjectItemTitle>
-        <S.ProjectItemTag>{item.period}</S.ProjectItemTag>
+        <S.ProjectItemTag
+          ref={elementRef as React.RefObject<HTMLSpanElement>}
+          $isVisible={isVisible}
+        >
+          <S.ProjectTagText>{item.period}</S.ProjectTagText>
+        </S.ProjectItemTag>
       </S.ProjectItemButton>
     </S.ProjectItem>
   );

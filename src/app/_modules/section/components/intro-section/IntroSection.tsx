@@ -29,17 +29,19 @@ const data: DataProps[] = introDataJson.map((item) => ({
   icon: iconMap[item.icon as keyof typeof iconMap],
 }));
 
-const IntroItem = ({ item }: { item: DataProps }) => {
-  const { elementRef, isVisible } = useScroll({
-    threshold: 0.2,
-    rootMargin: '-50px',
-    triggerOnce: true,
-  });
-
+const IntroItem = ({ 
+  item, 
+  elementRef, 
+  isVisible 
+}: { 
+  item: DataProps;
+  elementRef: React.RefObject<HTMLLIElement>;
+  isVisible: boolean;
+}) => {
   return (
     <S.IntroItem
       key={item.id}
-      ref={elementRef as React.RefObject<HTMLLIElement>}
+      ref={elementRef}
       $isVisible={isVisible}
     >
       <S.IntroItemIcon>{item.icon}</S.IntroItemIcon>
@@ -50,14 +52,36 @@ const IntroItem = ({ item }: { item: DataProps }) => {
 };
 
 const IntroSection = () => {
+  const { elementRef: textRef, isVisible: textVisible } = useScroll({
+    threshold: 0.2,
+    rootMargin: '-50px',
+    triggerOnce: true,
+  });
+
+  const item1Scroll = useScroll({ threshold: 0.2, rootMargin: '-50px', triggerOnce: true });
+  const item2Scroll = useScroll({ threshold: 0.2, rootMargin: '-50px', triggerOnce: true });
+  const item3Scroll = useScroll({ threshold: 0.2, rootMargin: '-50px', triggerOnce: true });
+
+  const scrollRefs = [item1Scroll, item2Scroll, item3Scroll];
+
   return (
     <S.StyledIntroSection id='about'>
       <Inner>
         <SectionTitle title='About' />
-        <S.IntroText>적극적으로 개발하고 협업 중심으로 사고합니다.</S.IntroText>
+        <S.IntroText
+          ref={textRef as React.RefObject<HTMLParagraphElement>}
+          $isVisible={textVisible}
+        >
+          적극적으로 개발하고 협업 중심으로 사고합니다.
+        </S.IntroText>
         <S.IntroList>
-          {data.map((item) => (
-            <IntroItem item={item} key={item.id} />
+          {data.map((item, index) => (
+            <IntroItem 
+              item={item} 
+              key={item.id}
+              elementRef={scrollRefs[index]?.elementRef as React.RefObject<HTMLLIElement>}
+              isVisible={scrollRefs[index]?.isVisible || false}
+            />
           ))}
         </S.IntroList>
       </Inner>

@@ -3,14 +3,18 @@ import styled from 'styled-components';
 
 export const StyledIntroSection = styled.section`
   position: relative;
-  padding: 8rem 0 10rem;
+  padding: 12rem 0 14rem;
 `;
 
-export const IntroText = styled.p`
-  margin-top: 20px;
+export const IntroText = styled.p<{ $isVisible: boolean }>`
+  margin-top: 3rem;
   color: ${({ theme }) => theme.color.primary.gray};
   font-size: 2rem;
   letter-spacing: -0.5px;
+  opacity: 0;
+  transform: translateY(20px);
+
+  ${({ $isVisible }) => $isVisible && animation.showElement('0.5s', '0s')}
 
   ${({ theme }) => theme.responsive.mobile} {
     font-size: 1.6rem;
@@ -22,7 +26,7 @@ export const IntroList = styled.ul`
   grid-template-columns: repeat(3, 1fr);
   align-items: center;
   gap: 20px;
-  margin-top: 60px;
+  margin-top: 8rem;
 
   ${({ theme }) => theme.responsive.mobile} {
     grid-template-columns: repeat(1, 1fr);
@@ -81,7 +85,7 @@ export const IntroItemText = styled.p`
   margin-top: 18px;
   color: ${({ theme }) => theme.color.primary.gray};
   font-size: 1.4rem;
-  line-height: 140%;
+  line-height: 160%;
   letter-spacing: -0.5px;
 
   ${({ theme }) => theme.responsive.mobile} {
