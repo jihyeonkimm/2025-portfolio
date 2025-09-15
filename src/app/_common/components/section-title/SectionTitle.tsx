@@ -5,10 +5,11 @@ import * as S from './styled';
 import useScroll from '@/app/hooks/useScroll';
 
 interface SectionTitleProps {
-  title: string;
+  title: string | React.ReactNode;
+  align?: 'left' | 'center' | 'right';
 }
 
-const SectionTitle = ({ title }: SectionTitleProps) => {
+const SectionTitle = ({ title, align }: SectionTitleProps) => {
   const { elementRef, isVisible } = useScroll({
     threshold: 0.2,
     rootMargin: '-50px',
@@ -19,6 +20,7 @@ const SectionTitle = ({ title }: SectionTitleProps) => {
     <S.StyledSectionTitle
       ref={elementRef as React.RefObject<HTMLHeadingElement>}
       $isVisible={isVisible}
+      $align={align}
     >
       {title}
     </S.StyledSectionTitle>

@@ -7,9 +7,12 @@ type SectionId = (typeof SECTION_IDS)[number];
 
 const useActiveSection = () => {
   const [activeSection, setActiveSection] = useState<SectionId>('home');
+  const [scrollStart, setScrollStart] = useState<boolean>(false);
 
   useEffect(() => {
     const handleScroll = () => {
+      setScrollStart(window.scrollY > 10);
+
       const sections = SECTION_IDS.map((id) => {
         const element = document.getElementById(id);
         if (element) {
@@ -27,7 +30,6 @@ const useActiveSection = () => {
       if (sections.length === 0) return;
 
       const viewportCenter = window.innerHeight / 2;
-
       const firstVisibleSection = sections.find((section) => section && section.bottom > 0);
 
       if (!firstVisibleSection) return;
@@ -75,7 +77,7 @@ const useActiveSection = () => {
     }
   };
 
-  return { activeSection, scrollToSection, SECTION_IDS };
+  return { activeSection, scrollToSection, SECTION_IDS, scrollStart };
 };
 
 export default useActiveSection;

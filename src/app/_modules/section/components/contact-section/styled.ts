@@ -11,6 +11,7 @@ export const ContactContainer = styled.div`
   padding-right: 20vw;
 
   ${({ theme }) => theme.responsive.mobile} {
+    justify-content: flex-start;
     padding-right: 0;
   }
 `;
@@ -29,9 +30,14 @@ export const ContactItem = styled.li`
 `;
 
 export const ContactItemTitle = styled.strong`
+  color: ${({ theme }) => theme.color.common.white};
   font-size: 2.4rem;
   font-weight: 500;
   letter-spacing: -0.5px;
+
+  ${({ theme }) => theme.responsive.mobile} {
+    font-size: 2rem;
+  }
 `;
 
 export const ContactLink = styled(Link)`
@@ -42,7 +48,11 @@ export const ContactLink = styled(Link)`
 
   @media (hover: hover) {
     &:hover {
-      color: ${({ theme }) => theme.color.primary.orange};
+      color: ${({ theme }) => theme.color.primary.blue};
     }
+  }
+
+  ${({ theme }) => theme.responsive.mobile} {
+    font-size: 1.4rem;
   }
 `;

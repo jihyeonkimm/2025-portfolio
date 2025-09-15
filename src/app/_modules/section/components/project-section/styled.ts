@@ -4,7 +4,6 @@ import styled, { css, keyframes } from 'styled-components';
 export const StyledProjectSection = styled.section`
   position: relative;
   padding: 10rem 0;
-  background-color: ${({ theme }) => theme.color.background.gray};
 `;
 
 export const ProjectList = styled.ul`
@@ -24,7 +23,8 @@ export const ProjectItem = styled.li<{ $isVisible: boolean }>`
   position: relative;
   width: 50%;
   opacity: 0;
-  transform: translateY(20px);
+  transform: translateY(20px) translateZ(0) scale(0.9);
+  transform-origin: 50% 50%;
 
   &:nth-child(even) {
     align-self: flex-end;
@@ -68,6 +68,7 @@ export const ProjectItemImage = styled.span<{ $isVisible: boolean }>`
 
   ${({ theme }) => theme.responsive.mobile} {
     margin-bottom: 20px;
+    border-radius: 10px;
   }
 
   & img {
@@ -84,7 +85,7 @@ export const ProjectItemImage = styled.span<{ $isVisible: boolean }>`
     left: 0;
     width: 100%;
     height: 100%;
-    background-color: ${({ theme }) => theme.color.primary.orange};
+    background-color: ${({ theme }) => theme.color.primary.blue};
 
     ${({ $isVisible }) =>
       $isVisible &&
@@ -101,7 +102,7 @@ export const ProjectItemImage = styled.span<{ $isVisible: boolean }>`
 `;
 
 export const ProjectItemTitle = styled.strong`
-  color: ${({ theme }) => theme.color.common.black};
+  color: ${({ theme }) => theme.color.common.white};
   font-size: 2.2rem;
   font-weight: 500;
   letter-spacing: -0.5px;
@@ -116,7 +117,7 @@ export const ProjectTagText = styled.p`
   white-space: nowrap;
   transform: translateY(-20px);
   transition: 0.5s;
-  transition-delay: 1.8s;
+  transition-delay: 1.3s;
 `;
 
 export const ProjectItemTag = styled.span<{ $isVisible: boolean }>`
@@ -126,13 +127,13 @@ export const ProjectItemTag = styled.span<{ $isVisible: boolean }>`
   margin-top: 10px;
   line-height: 22px;
   padding: 0px 10px;
-  color: ${({ theme }) => theme.color.common.black};
-  border: 1px solid ${({ theme }) => theme.color.common.black};
+  color: ${({ theme }) => theme.color.common.white};
+  border: 1px solid ${({ theme }) => theme.color.common.white};
   border-radius: 50px;
-  background-color: ${({ theme }) => theme.color.common.white};
+  /* background-color: ${({ theme }) => theme.color.common.white}; */
   overflow: hidden;
   transition: 0.8s;
-  transition-delay: 1s;
+  transition-delay: 0.5s;
 
   & ${ProjectTagText} {
     transform: ${({ $isVisible }) => ($isVisible ? 'translateY(0px)' : 'translateY(-20px)')};

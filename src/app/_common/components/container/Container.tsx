@@ -9,11 +9,15 @@ interface ContainerProps {
 }
 
 const Container = ({ children }: ContainerProps) => {
-  const { activeSection, scrollToSection } = useActiveSection();
+  const { activeSection, scrollToSection, scrollStart } = useActiveSection();
 
   return (
     <S.StyledContainer>
-      <Header activeSection={activeSection} onNavigate={scrollToSection} />
+      <Header
+        activeSection={activeSection}
+        onNavigate={scrollToSection}
+        scrollStart={scrollStart}
+      />
 
       {children}
     </S.StyledContainer>

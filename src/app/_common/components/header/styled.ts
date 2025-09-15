@@ -1,6 +1,7 @@
 import styled from 'styled-components';
+import { animation } from '../../styles/theme/keyframes';
 
-export const StyledHeader = styled.header`
+export const StyledHeader = styled.header<{ $scrollStart: boolean }>`
   position: fixed;
   top: 0px;
   width: 100%;
@@ -8,7 +9,8 @@ export const StyledHeader = styled.header`
   align-items: center;
   padding: 10px 20px;
   backdrop-filter: blur(10px);
-  background-color: rgba(255, 255, 255, 0.5);
+  background-color: ${({ $scrollStart }) => ($scrollStart ? 'rgba(0, 0, 0, 0.2)' : 'transparent')};
+  transition: background-color 0.3s ease;
   z-index: 1000;
 
   ${({ theme }) => theme.responsive.mobile} {
@@ -20,13 +22,13 @@ export const StyledHeader = styled.header`
 export const Logo = styled.h1`
   position: relative;
   left: 0;
-  width: 70px;
-  height: 70px;
+  width: 40px;
+  height: 40px;
   flex-shrink: 0;
 
   ${({ theme }) => theme.responsive.mobile} {
-    width: 50px;
-    height: 50px;
+    width: 30px;
+    height: 30px;
   }
 
   & a {
@@ -47,7 +49,7 @@ export const MenuList = styled.ul`
   justify-content: center;
   align-items: center;
   margin: 0 auto;
-  gap: 0px 30px;
+  gap: 0px 40px;
   padding: 8px 13px;
   border-radius: 30px;
 
@@ -58,8 +60,9 @@ export const MenuList = styled.ul`
 
 export const MenuItem = styled.li<{ $isActive?: boolean }>`
   color: ${({ theme, $isActive }) =>
-    $isActive ? theme.color.primary.orange : theme.color.common.black};
+    $isActive ? theme.color.common.white : theme.color.primary.gray};
   font-size: 1.6rem;
+  font-weight: 500;
   line-height: 30px;
   padding: 0px 10px;
   border-radius: 40px;
@@ -67,14 +70,14 @@ export const MenuItem = styled.li<{ $isActive?: boolean }>`
   transition: color 0.2s ease;
 
   &:hover {
-    color: ${({ theme }) => theme.color.primary.orange};
+    color: ${({ theme }) => theme.color.primary.blue};
   }
 `;
 
 export const MobileMenuButton = styled.button<{ $isMobileMenuOpen: boolean }>`
   position: relative;
   display: none;
-  z-index: 100;
+  z-index: 1400;
 
   ${({ theme }) => theme.responsive.mobile} {
     display: flex;
@@ -92,7 +95,7 @@ export const MenuLine = styled.span<{ $isMobileMenuOpen: boolean }>`
     width: 100%;
     height: 2px;
     border-radius: 50px;
-    background-color: ${({ theme }) => theme.color.common.black};
+    background-color: ${({ theme }) => theme.color.common.white};
     transition: all 0.3s ease;
     transform-origin: center;
 
@@ -112,8 +115,9 @@ export const MenuLine = styled.span<{ $isMobileMenuOpen: boolean }>`
   }
 `;
 
-export const MobileMenuContainer = styled.div`
-  display: none;
+export const MobileMenuContainer = styled.div<{ $isMobileMenuOpen: boolean }>`
+  opacity: 0;
+  visibility: hidden;
 
   ${({ theme }) => theme.responsive.mobile} {
     position: fixed;
@@ -126,8 +130,12 @@ export const MobileMenuContainer = styled.div`
     justify-content: center;
     align-items: center;
     gap: 20px;
-    backdrop-filter: blur(10px);
-    background-color: rgba(255, 255, 255, 0.9);
+    backdrop-filter: blur(40px);
+    background-color: rgba(0, 0, 0, 0.6);
+    z-index: 1300;
+
+    ${({ $isMobileMenuOpen }) =>
+      $isMobileMenuOpen ? animation.opacityUp('0.3s', '0s') : animation.opacityDown('0.3s', '0s')};
   }
 `;
 

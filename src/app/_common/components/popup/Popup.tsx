@@ -1,6 +1,6 @@
 'use client';
 
-import React, { ReactNode, useEffect } from 'react';
+import React, { ReactNode, useEffect, useState } from 'react';
 import * as S from './styled';
 import { IconClose } from '../../assets/icons/components';
 
@@ -11,21 +11,31 @@ interface PopupProps {
 }
 
 const Popup = ({ children, onClose, isOpen }: PopupProps) => {
+  const [isClosing, setIsClosing] = useState(false);
+
   useEffect(() => {
     if (isOpen) {
       document.body.style.overflow = 'hidden';
+      setIsClosing(false);
     }
     return () => {
       document.body.style.overflow = '';
     };
   }, [isOpen]);
 
-  if (!isOpen) return null;
+  const handleClose = () => {
+    setIsClosing(true);
+    setTimeout(() => {
+      onClose();
+    }, 300); // 애니메이션 시간과 맞춤
+  };
+
+  if (!isOpen && !isClosing) return null;
 
   return (
-    <S.Overlay onClick={onClose}>
-      <S.PopupContainer onClick={(e) => e.stopPropagation()}>
-        <S.CloseButton type='button' onClick={onClose}>
+    <S.Overlay onClick={handleClose} $isClosing={isClosing}>
+      <S.PopupContainer onClick={(e) => e.stopPropagation()} $isClosing={isClosing}>
+        <S.CloseButton type='button' onClick={handleClose}>
           <IconClose />
         </S.CloseButton>
         <S.PopupChildrenContainer>{children}</S.PopupChildrenContainer>

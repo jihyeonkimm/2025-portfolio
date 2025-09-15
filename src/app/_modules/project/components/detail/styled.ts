@@ -111,7 +111,7 @@ export const SkillTooltip = styled.span`
   color: ${({ theme }) => theme.color.common.white};
   font-size: 1.3rem;
   text-align: center;
-  background-color: ${({ theme }) => theme.color.primary.orange};
+  background-color: ${({ theme }) => theme.color.primary.blue};
   opacity: 0;
   visibility: hidden;
   transition: 0.25s;
@@ -128,7 +128,7 @@ export const SkillTooltip = styled.span`
     border-left: 5px solid transparent;
     border-right: 5px solid transparent;
     border-top: 5px solid transparent;
-    border-bottom: 5px solid ${({ theme }) => theme.color.primary.orange};
+    border-bottom: 5px solid ${({ theme }) => theme.color.primary.blue};
   }
 `;
 

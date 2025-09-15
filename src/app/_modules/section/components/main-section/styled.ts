@@ -9,6 +9,7 @@ export const StyledMainContainer = styled.main`
   align-items: center;
   width: 100%;
   height: 100dvh;
+  /* background: linear-gradient(180deg, #009fff 0%, rgba(194, 41, 255, 0.6) 100%); */
 
   ${({ theme }) => theme.responsive.mobile} {
     padding: 0 20px;
@@ -23,7 +24,7 @@ export const BlurContainer = styled.div`
   width: 50%;
   height: 80%;
   margin-top: 90px;
-  z-index: -1;
+  z-index: 0;
 `;
 
 const blob1animation = keyframes`
@@ -60,21 +61,21 @@ export const Blob = styled.div`
     position: absolute;
     top: 0%;
     left: 30%;
-    background-color: rgb(255, 178, 124);
+    background-color: ${({ theme }) => theme.color.primary.blue};
     animation: ${blob1animation} 8s infinite ease;
   }
   &.blob2 {
     position: absolute;
     top: 20%;
     left: 10%;
-    background-color: rgb(255, 251, 125);
+    background-color: ${({ theme }) => theme.color.primary.gray};
     animation: ${blob2animation} 8s infinite ease;
   }
   &.blob3 {
     position: absolute;
     top: 40%;
     left: 40%;
-    background-color: rgb(224, 164, 193);
+    background-color: ${({ theme }) => theme.color.primary.purple};
     animation: ${blob3animation} 8s infinite ease;
   }
 
@@ -87,11 +88,13 @@ export const Blob = styled.div`
 
 export const MainTitle = styled.h2`
   position: relative;
-  font-size: 8rem;
+  font-size: clamp(4rem, 8vw, 9rem);
   font-weight: 700;
+  line-height: 120%;
   text-align: center;
   letter-spacing: -1px;
   white-space: pre-wrap;
+  z-index: 1;
 
   ${({ theme }) => theme.responsive.tablet} {
     font-size: 5rem;
@@ -103,10 +106,10 @@ export const MainTitle = styled.h2`
   }
 `;
 
-export const MainTitleText = styled.p<{ $isPlaying: boolean; $color?: string }>`
+export const MainTitleText = styled.p<{ $color?: string; $isPlaying: boolean }>`
   display: inline-block;
   color: ${({ theme, $color }) =>
-    $color === 'orange' ? theme.color.primary.orange : theme.color.common.black};
+    $color === 'blue' ? theme.color.primary.blue : theme.color.common.white};
   opacity: 0;
   transform: translateY(20px);
 
@@ -115,7 +118,7 @@ export const MainTitleText = styled.p<{ $isPlaying: boolean; $color?: string }>`
 
 export const MainText = styled.p`
   display: inline-block;
-  color: ${({ theme }) => theme.color.primary.orange};
+  color: ${({ theme }) => theme.color.primary.blue};
 `;
 
 export const LottieContainer = styled.div`
@@ -139,11 +142,12 @@ export const Tag = styled.span`
   padding: 20px 23px 19px 18px;
   -webkit-backdrop-filter: blur(18px);
   backdrop-filter: blur(18px);
-  background-color: #fff6;
+  background-color: rgba(0, 0, 0, 0.2);
   border-radius: 40px;
+  color: ${({ theme }) => theme.color.common.white};
   font-size: 2rem;
   opacity: 0;
-  z-index: 1;
+  z-index: 2;
 
   animation: ${showTag} 0.5s 2.8s forwards;
 
@@ -167,6 +171,6 @@ export const Dot = styled.span`
   display: block;
   width: 8px;
   height: 8px;
-  background-color: ${({ theme }) => theme.color.primary.orange};
+  background-color: ${({ theme }) => theme.color.primary.blue};
   border-radius: 50%;
 `;

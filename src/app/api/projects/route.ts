@@ -16,6 +16,9 @@ export async function GET() {
     return NextResponse.json(projects);
   } catch (error) {
     console.error('error', error);
-    return NextResponse.json({ error: '500 에러 발생' }, { status: 500 });
+    return NextResponse.json(
+      { error: 'Internal Server Error', details: error.message },
+      { status: 500 },
+    );
   }
 }

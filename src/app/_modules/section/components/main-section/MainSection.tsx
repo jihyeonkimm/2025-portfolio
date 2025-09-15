@@ -14,21 +14,21 @@ interface TextDataProps {
 }
 
 const textData: TextDataProps[] = [
-  { id: 1, text: 'PROACTIVE ', color: 'orange' },
+  { id: 1, text: 'PROACTIVE ', color: 'blue' },
   { id: 2, text: 'DEVELOPER,' },
   { id: 3, text: '\n' },
   { id: 4, text: 'COLLABORATIVE ' },
-  { id: 5, text: 'MINDSET', color: 'orange' },
+  { id: 5, text: 'MINDSET', color: 'blue' },
 ];
 
 const mobileTextData: TextDataProps[] = [
-  { id: 1, text: 'PROACTIVE', color: 'orange' },
+  { id: 1, text: 'PROACTIVE', color: 'blue' },
   { id: 2, text: '\n' },
   { id: 3, text: 'DEVELOPER,' },
   { id: 4, text: '\n' },
   { id: 5, text: 'COLLABORATIVE' },
   { id: 6, text: '\n' },
-  { id: 7, text: 'MINDSET', color: 'orange' },
+  { id: 7, text: 'MINDSET', color: 'blue' },
 ];
 
 const MainSection = () => {
@@ -115,7 +115,7 @@ const MainSection = () => {
   }, []);
 
   return (
-    <S.StyledMainContainer id="home">
+    <S.StyledMainContainer id='home'>
       <S.BlurContainer>
         <S.Blob className='blob1' />
         <S.Blob className='blob2' />

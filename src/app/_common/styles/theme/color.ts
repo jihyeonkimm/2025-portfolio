@@ -4,12 +4,14 @@ export type Color = {
     white: string;
   };
   primary: {
-    orange: string;
+    blue: string;
+    purple: string;
     gray: string;
     lightgray: string;
   };
   background: {
     gray: string;
+    darkgray: string;
   };
 };
 
@@ -19,11 +21,13 @@ export const color: Color = {
     white: '#ffffff',
   },
   primary: {
-    orange: '#f74932',
-    gray: '#636363',
+    blue: '#009fff',
+    purple: '#b66dff',
+    gray: '#808080',
     lightgray: '#c5c5c5',
   },
   background: {
     gray: '#f9f9f9',
+    darkgray: 'rgb(29, 29, 31)',
   },
 };

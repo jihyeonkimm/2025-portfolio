@@ -1,32 +1,47 @@
-import { animation } from '@/app/_common/styles/theme/keyframes';
+// import { animation } from '@/app/_common/styles/theme/keyframes';
 import styled from 'styled-components';
 
 export const StyledIntroSection = styled.section`
   position: relative;
-  padding: 12rem 0 14rem;
+  height: 400vh;
+  background-color: ${({ theme }) => theme.color.background.darkgray};
 `;
 
-export const IntroText = styled.p<{ $isVisible: boolean }>`
-  margin-top: 3rem;
-  color: ${({ theme }) => theme.color.primary.gray};
-  font-size: 2rem;
-  letter-spacing: -0.5px;
-  opacity: 0;
-  transform: translateY(20px);
-
-  ${({ $isVisible }) => $isVisible && animation.showElement('0.5s', '0s')}
+export const StickyWrapper = styled.div`
+  position: sticky;
+  top: 0;
+  height: 100dvh;
+  padding-top: 12rem;
 
   ${({ theme }) => theme.responsive.mobile} {
-    font-size: 1.6rem;
+    padding-top: 5rem;
   }
 `;
 
+// export const IntroText = styled.p<{ $isVisible: boolean }>`
+//   margin-top: 3rem;
+//   color: ${({ theme }) => theme.color.primary.gray};
+//   font-size: 2.5rem;
+//   letter-spacing: -0.5px;
+//   opacity: 0;
+//   transform: translateY(20px);
+
+//   ${({ $isVisible }) => $isVisible && animation.showElement('0.5s', '0s')}
+
+//   ${({ theme }) => theme.responsive.mobile} {
+//     font-size: 1.6rem;
+//   }
+// `;
+
 export const IntroList = styled.ul`
-  display: grid;
-  grid-template-columns: repeat(3, 1fr);
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+
   align-items: center;
   gap: 20px;
-  margin-top: 8rem;
 
   ${({ theme }) => theme.responsive.mobile} {
     grid-template-columns: repeat(1, 1fr);
@@ -34,30 +49,26 @@ export const IntroList = styled.ul`
   }
 `;
 
-export const IntroItem = styled.li<{ $isVisible: boolean }>`
+export const IntroItem = styled.li`
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  transform-origin: center;
   align-self: stretch;
   padding: 2rem;
-  background-color: ${({ theme }) => theme.color.background.gray};
-  border-radius: 10px;
-  border: 1px solid transparent;
+  background: rgba(0, 0, 0, 0.16);
+  box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+  backdrop-filter: blur(5.9px);
+  -webkit-backdrop-filter: blur(5.9px);
+  border-radius: 16px;
+  border: 1px solid rgba(0, 0, 0, 0.12);
   transition: 0.3s;
-  opacity: 0;
-  transform: translateY(20px);
-
-  ${({ $isVisible }) => $isVisible && animation.showElement('0.5s', '0s')}
-
-  &:nth-child(2) {
-    ${({ $isVisible }) => $isVisible && animation.showElement('0.5s', '0.3s')}
-  }
-
-  &:nth-child(3) {
-    ${({ $isVisible }) => $isVisible && animation.showElement('0.5s', '0.6s')}
-  }
 
   @media (hover: hover) {
     &:hover {
-      background-color: ${({ theme }) => theme.color.common.white};
-      border-color: ${({ theme }) => theme.color.background.gray};
+      /* background-color: ${({ theme }) => theme.color.common.white};
+      border-color: ${({ theme }) => theme.color.background.gray}; */
       box-shadow: 0 10px 20px rgba(0, 0, 0, 0.05);
     }
   }
@@ -67,11 +78,13 @@ export const IntroItem = styled.li<{ $isVisible: boolean }>`
   }
 
   ${({ theme }) => theme.responsive.mobile} {
+    width: calc(100% - 40px);
     padding: 1.2rem;
   }
 `;
 
 export const IntroItemTitle = styled.strong`
+  color: ${({ theme }) => theme.color.common.white};
   font-size: 2rem;
   line-height: 120%;
   letter-spacing: -0.5px;

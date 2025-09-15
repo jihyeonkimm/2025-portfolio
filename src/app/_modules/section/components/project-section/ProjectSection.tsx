@@ -37,7 +37,7 @@ const ProjectItem = ({ item }: { item: DataProps }) => {
     >
       <S.ProjectItemButton
         type='button'
-        onClick={() => router.push(`/project/${item.projectName}`)}
+        onClick={() => router.push(`/project/${item.projectName}`, { scroll: false })}
       >
         <S.ProjectItemImage $isVisible={isVisible}>
           <Image src={item.thumbnail} alt='project thumbnail' fill sizes='100%' />

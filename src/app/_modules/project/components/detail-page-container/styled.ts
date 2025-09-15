@@ -1,9 +1,9 @@
 import styled from 'styled-components';
 
 export const StyledPageContainer = styled.div`
-  max-width: 960px;
-  margin: 0 auto;
-  padding: 7rem 0;
+  width: 100%;
+  padding: 7rem 16rem;
+  background-color: ${({ theme }) => theme.color.common.white};
 
   ${({ theme }) => theme.responsive.mobile} {
     padding: 70px 20px;
