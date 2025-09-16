@@ -3,35 +3,28 @@
 import React, { useEffect, useRef, useState } from 'react';
 import * as S from './styled';
 
-import { IntroIcon01 } from '@/app/_common/assets/icons/components/index';
-import { IntroIcon02 } from '@/app/_common/assets/icons/components/index';
-import { IntroIcon03 } from '@/app/_common/assets/icons/components/index';
 import introDataJson from '@/app/data/introData.json';
 import SectionTitle from '@/app/_common/components/section-title/SectionTitle';
+import Image from 'next/image';
 
 interface DataProps {
   id: number;
+  img: string;
   title: string;
   description: string;
-  icon: React.ReactNode;
   style?: React.CSSProperties;
 }
 
-const iconMap = {
-  IntroIcon01: <IntroIcon01 />,
-  IntroIcon02: <IntroIcon02 />,
-  IntroIcon03: <IntroIcon03 />,
-};
-
 const data: DataProps[] = introDataJson.map((item) => ({
   ...item,
-  icon: iconMap[item.icon as keyof typeof iconMap],
 }));
 
 const IntroItem = ({ item, style }: { item: DataProps; style?: React.CSSProperties }) => {
   return (
     <S.IntroItem key={item.id} style={style}>
-      <S.IntroItemIcon>{item.icon}</S.IntroItemIcon>
+      <S.IntroItemIcon>
+        <Image src={item.img} alt={`${item.title}을 나타내는 이미지`} fill sizes='100%' />
+      </S.IntroItemIcon>
       <S.IntroItemTitle>{item.title}</S.IntroItemTitle>
       <S.IntroItemText>{item.description}</S.IntroItemText>
     </S.IntroItem>
@@ -101,7 +94,7 @@ const IntroSection = () => {
         >
           적극적으로 개발하고 협업 중심으로 사고합니다.
         </S.IntroText> */}
-        <S.IntroList>
+        <S.IntroWrapper>
           <SectionTitle
             title={
               <>
@@ -111,21 +104,23 @@ const IntroSection = () => {
             }
             align='center'
           />
-          {data.map((item, index) => (
-            <IntroItem
-              item={item}
-              key={item.id}
-              style={{
-                opacity: getOpacity(index),
-                zIndex: currentStep === index ? 1 : 0,
-                transform:
-                  currentStep === index
-                    ? 'translate(-50%, -50%) scale(1)'
-                    : 'translate(-50%, -40%) scale(0.95)',
-              }}
-            />
-          ))}
-        </S.IntroList>
+          <S.IntroList>
+            {data.map((item, index) => (
+              <IntroItem
+                item={item}
+                key={item.id}
+                style={{
+                  opacity: getOpacity(index),
+                  zIndex: currentStep === index ? 1 : 0,
+                  transform:
+                    currentStep === index
+                      ? 'translate(-50%, -50%) scale(1)'
+                      : 'translate(-50%, -40%) scale(0.95)',
+                }}
+              />
+            ))}
+          </S.IntroList>
+        </S.IntroWrapper>
       </S.StickyWrapper>
     </S.StyledIntroSection>
   );

@@ -32,18 +32,23 @@ export const StickyWrapper = styled.div`
 //   }
 // `;
 
-export const IntroList = styled.ul`
+export const IntroWrapper = styled.div`
   position: absolute;
   width: 100%;
   height: 100%;
+
+  ${({ theme }) => theme.responsive.mobile} {
+    margin-top: 30px;
+  }
+`;
+
+export const IntroList = styled.ul`
   display: flex;
   flex-direction: column;
-
   align-items: center;
   gap: 20px;
 
   ${({ theme }) => theme.responsive.mobile} {
-    grid-template-columns: repeat(1, 1fr);
     margin-top: 30px;
   }
 `;
@@ -54,14 +59,17 @@ export const IntroItem = styled.li`
   left: 50%;
   transform: translate(-50%, -50%);
   transform-origin: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
   align-self: stretch;
   padding: 2rem;
-  background: rgba(0, 0, 0, 0.16);
+  /* background: rgba(0, 0, 0, 0.16);
   box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
   backdrop-filter: blur(5.9px);
   -webkit-backdrop-filter: blur(5.9px);
   border-radius: 16px;
-  border: 1px solid rgba(0, 0, 0, 0.12);
+  border: 1px solid rgba(0, 0, 0, 0.12); */
   transition: 0.3s;
 
   @media (hover: hover) {
@@ -84,34 +92,41 @@ export const IntroItem = styled.li`
 
 export const IntroItemTitle = styled.strong`
   color: ${({ theme }) => theme.color.common.white};
-  font-size: 2rem;
-  line-height: 120%;
+  font-size: 2.4rem;
+  font-weight: 600;
+  line-height: 1.6;
   letter-spacing: -0.5px;
+  text-align: center;
 
   ${({ theme }) => theme.responsive.mobile} {
-    font-size: 1.8rem;
+    font-size: 2rem;
   }
 `;
 
 export const IntroItemText = styled.p`
   margin-top: 18px;
   color: ${({ theme }) => theme.color.primary.gray};
-  font-size: 1.4rem;
-  line-height: 160%;
-  letter-spacing: -0.5px;
+  font-size: 1.8rem;
+  font-weight: 600;
+  line-height: 1.43;
+  letter-spacing: 0.011px;
+  text-align: center;
 
   ${({ theme }) => theme.responsive.mobile} {
-    font-size: 1.2rem;
+    font-size: 1.6rem;
   }
 `;
 
 export const IntroItemIcon = styled.span`
+  position: relative;
   display: block;
-  width: 50px;
-  height: 50px;
-  margin-bottom: 60px;
+  width: 11rem;
+  height: 11rem;
+  margin-bottom: 5rem;
 
   ${({ theme }) => theme.responsive.mobile} {
-    margin-bottom: 40px;
+    width: 9rem;
+    height: 9rem;
+    margin-bottom: 4rem;
   }
 `;
