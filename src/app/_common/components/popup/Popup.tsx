@@ -27,7 +27,7 @@ const Popup = ({ children, onClose, isOpen }: PopupProps) => {
     setIsClosing(true);
     setTimeout(() => {
       onClose();
-    }, 300); // 애니메이션 시간과 맞춤
+    }, 300);
   };
 
   if (!isOpen && !isClosing) return null;

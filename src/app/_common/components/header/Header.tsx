@@ -23,16 +23,26 @@ const MENU_ITEMS: { id: SectionId; label: string }[] = [
 
 const Header = ({ activeSection, onNavigate, scrollStart }: HeaderProps) => {
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState<boolean>(false);
+  const [isClosing, setIsClosing] = useState<boolean>(false);
   const isMobileView = useIsMobile();
 
   const handleMobileMenuClick = (id: SectionId) => {
     onNavigate(id);
-    setIsMobileMenuOpen(false);
+    handleMobileMenuClose();
+  };
+
+  const handleMobileMenuClose = () => {
+    setIsClosing(true);
+    setTimeout(() => {
+      setIsMobileMenuOpen(false);
+      setIsClosing(false);
+    }, 300);
   };
 
   useEffect(() => {
     if (isMobileMenuOpen) {
       document.body.style.overflow = 'hidden';
+      setIsClosing(false);
     }
     return () => {
       document.body.style.overflow = '';
@@ -63,14 +73,18 @@ const Header = ({ activeSection, onNavigate, scrollStart }: HeaderProps) => {
           onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
           $isMobileMenuOpen={isMobileMenuOpen}
         >
-          <S.MenuLine $isMobileMenuOpen={isMobileMenuOpen} />
-          <S.MenuLine $isMobileMenuOpen={isMobileMenuOpen} />
-          <S.MenuLine $isMobileMenuOpen={isMobileMenuOpen} />
+          <S.MenuLine />
+          <S.MenuLine />
+          <S.MenuLine />
         </S.MobileMenuButton>
       </S.StyledHeader>
 
-      {isMobileView && isMobileMenuOpen && (
-        <S.MobileMenuContainer $isMobileMenuOpen={isMobileMenuOpen}>
+      {isMobileView && (isMobileMenuOpen || isClosing) && (
+        <S.MobileMenuContainer $isClosing={isClosing}>
+          <S.MobileCloseButton type='button' onClick={() => handleMobileMenuClose()}>
+            <S.MenuLine />
+            <S.MenuLine />
+          </S.MobileCloseButton>
           <S.MobileMenuList>
             {MENU_ITEMS.map((item) => (
               <S.MenuItem

@@ -4,7 +4,6 @@ import styled from 'styled-components';
 export const StyledIntroSection = styled.section`
   position: relative;
   height: 400vh;
-  background-color: ${({ theme }) => theme.color.background.darkgray};
 `;
 
 export const StickyWrapper = styled.div`

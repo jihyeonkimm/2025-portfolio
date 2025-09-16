@@ -21,26 +21,30 @@ export const BlurContainer = styled.div`
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
-  width: 50%;
-  height: 80%;
-  margin-top: 90px;
+  width: 100%;
+  height: 100%;
   z-index: 0;
+  overflow: hidden;
+
+  ${({ theme }) => theme.responsive.mobile} {
+    margin-top: 20%;
+  }
 `;
 
 const blob1animation = keyframes`
-  0% {top: 0%; left: 30%; transform: scale(1);}
-  25% {top: 20%; left: 0%; transform: scale(1.2);}
+  0% {top: 10%; left: 30%; transform: scale(1);}
+  25% {top: 30%; left: 0%; transform: scale(1.2);}
   50% {top: 40%; left: 30%; transform: scale(1.1);}
   75% {top: 30%; left: 50%; transform: scale(1);}
-  100% {top: 0%; left: 30%; transform: scale(1);}
+  100% {top: 10%; left: 30%; transform: scale(1);}
 `;
 
 const blob2animation = keyframes`
-  0% {top: 20%; left: 10%; transform: scale(1);}
-  25% {top: 40%; left: 30%; transform: scale(1);}
+  0% {top: 30%; left: 10%; transform: scale(1);}
+  25% {top: 45%; left: 30%; transform: scale(1);}
   50% {top: 20%; left: 60%; transform: scale(1.2);}
-  75% {top: 0%; left: 30%; transform: scale(1.1);}
-  100% {top: 20%; left: 10%; transform: scale(1);}
+  75% {top: 15%; left: 30%; transform: scale(1.1);}
+  100% {top: 30%; left: 10%; transform: scale(1);}
 `;
 
 const blob3animation = keyframes`
@@ -55,34 +59,34 @@ export const Blob = styled.div`
   width: 40%;
   height: 40%;
   border-radius: 100px;
-  filter: blur(100px);
+  filter: blur(120px);
 
   &.blob1 {
     position: absolute;
-    top: 0%;
+    top: 10%;
     left: 30%;
-    background-color: ${({ theme }) => theme.color.primary.blue};
+    background-color: rgba(0, 102, 255, 0.4);
     animation: ${blob1animation} 8s infinite ease;
   }
   &.blob2 {
     position: absolute;
-    top: 20%;
+    top: 30%;
     left: 10%;
-    background-color: ${({ theme }) => theme.color.primary.gray};
+    background-color: rgba(43, 0, 255, 0.4);
     animation: ${blob2animation} 8s infinite ease;
   }
   &.blob3 {
     position: absolute;
     top: 40%;
     left: 40%;
-    background-color: ${({ theme }) => theme.color.primary.purple};
+    background-color: rgba(122, 0, 204, 0.4);
     animation: ${blob3animation} 8s infinite ease;
   }
 
   ${({ theme }) => theme.responsive.mobile} {
-    width: 30%;
+    width: 35%;
     height: 30%;
-    filter: blur(50px);
+    filter: blur(80px);
   }
 `;
 
@@ -92,7 +96,7 @@ export const MainTitle = styled.h2`
   font-weight: 700;
   line-height: 120%;
   text-align: center;
-  letter-spacing: -1px;
+  letter-spacing: -1.2px;
   white-space: pre-wrap;
   z-index: 1;
 

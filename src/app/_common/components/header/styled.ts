@@ -1,21 +1,41 @@
-import styled from 'styled-components';
+import styled, { css } from 'styled-components';
 import { animation } from '../../styles/theme/keyframes';
 
 export const StyledHeader = styled.header<{ $scrollStart: boolean }>`
   position: fixed;
   top: 0px;
+  left: 50%;
+  transform: translate(-50%, 0);
   width: 100%;
   display: flex;
+  justify-content: space-between;
   align-items: center;
-  padding: 10px 20px;
-  backdrop-filter: blur(10px);
-  background-color: ${({ $scrollStart }) => ($scrollStart ? 'rgba(0, 0, 0, 0.2)' : 'transparent')};
-  transition: background-color 0.3s ease;
+  padding: 5px 20px;
+  transition: 0.23s ease;
+  will-change: transform;
   z-index: 1000;
+
+  ${({ $scrollStart }) =>
+    $scrollStart &&
+    css`
+      transform: translate(-50%, 20px);
+      width: 80%;
+      background: rgba(18, 18, 18, 0.8);
+      backdrop-filter: blur(20px);
+      box-shadow: 0 0 0 1px #28282a;
+      border-radius: 100px;
+    `}
 
   ${({ theme }) => theme.responsive.mobile} {
     justify-content: space-between;
-    padding: 10px 20px;
+    padding: 5px 15px;
+
+    ${({ $scrollStart }) =>
+      $scrollStart &&
+      css`
+        transform: translate(-50%, 10px);
+        width: 90%;
+      `}
   }
 `;
 
@@ -48,10 +68,8 @@ export const MenuList = styled.ul`
   display: flex;
   justify-content: center;
   align-items: center;
-  margin: 0 auto;
   gap: 0px 40px;
-  padding: 8px 13px;
-  border-radius: 30px;
+  padding: 8px 10px;
 
   ${({ theme }) => theme.responsive.mobile} {
     display: none;
@@ -77,7 +95,6 @@ export const MenuItem = styled.li<{ $isActive?: boolean }>`
 export const MobileMenuButton = styled.button<{ $isMobileMenuOpen: boolean }>`
   position: relative;
   display: none;
-  z-index: 1400;
 
   ${({ theme }) => theme.responsive.mobile} {
     display: flex;
@@ -89,33 +106,17 @@ export const MobileMenuButton = styled.button<{ $isMobileMenuOpen: boolean }>`
   }
 `;
 
-export const MenuLine = styled.span<{ $isMobileMenuOpen: boolean }>`
+export const MenuLine = styled.span`
   ${({ theme }) => theme.responsive.mobile} {
     display: block;
     width: 100%;
     height: 2px;
     border-radius: 50px;
     background-color: ${({ theme }) => theme.color.common.white};
-    transition: all 0.3s ease;
-    transform-origin: center;
-
-    &:nth-child(1) {
-      transform: ${(props) =>
-        props.$isMobileMenuOpen ? 'translateY(6px) rotate(45deg)' : 'translateY(0) rotate(0)'};
-    }
-
-    &:nth-child(2) {
-      opacity: ${(props) => (props.$isMobileMenuOpen ? '0' : '1')};
-    }
-
-    &:nth-child(3) {
-      transform: ${(props) =>
-        props.$isMobileMenuOpen ? 'translateY(-5px) rotate(-45deg)' : 'translateY(0) rotate(0)'};
-    }
   }
 `;
 
-export const MobileMenuContainer = styled.div<{ $isMobileMenuOpen: boolean }>`
+export const MobileMenuContainer = styled.div<{ $isClosing: boolean }>`
   opacity: 0;
   visibility: hidden;
 
@@ -134,8 +135,8 @@ export const MobileMenuContainer = styled.div<{ $isMobileMenuOpen: boolean }>`
     background-color: rgba(0, 0, 0, 0.6);
     z-index: 1300;
 
-    ${({ $isMobileMenuOpen }) =>
-      $isMobileMenuOpen ? animation.opacityUp('0.3s', '0s') : animation.opacityDown('0.3s', '0s')};
+    ${({ $isClosing }) =>
+      $isClosing ? animation.opacityDown('0.3s', '0s') : animation.opacityUp('0.3s', '0s')};
   }
 `;
 
@@ -147,5 +148,31 @@ export const MobileMenuList = styled.ul`
     flex-direction: column;
     justify-content: center;
     align-items: center;
+  }
+`;
+
+export const MobileCloseButton = styled.button`
+  position: absolute;
+  top: 20px;
+  right: 30px;
+  display: none;
+
+  ${({ theme }) => theme.responsive.mobile} {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+    width: 20px;
+    height: 13px;
+
+    & > ${MenuLine} {
+      &:nth-child(1) {
+        transform: translateY(6px) rotate(45deg);
+      }
+
+      &:nth-child(2) {
+        transform: translateY(-5px) rotate(-45deg);
+      }
+    }
   }
 `;

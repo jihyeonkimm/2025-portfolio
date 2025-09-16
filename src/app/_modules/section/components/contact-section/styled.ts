@@ -3,6 +3,7 @@ import styled from 'styled-components';
 
 export const StyledContactSection = styled.footer`
   padding: 100px 0;
+  background-color: ${({ theme }) => theme.color.background.darkgray};
 `;
 
 export const ContactContainer = styled.div`

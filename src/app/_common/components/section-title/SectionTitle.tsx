@@ -11,7 +11,7 @@ interface SectionTitleProps {
 
 const SectionTitle = ({ title, align }: SectionTitleProps) => {
   const { elementRef, isVisible } = useScroll({
-    threshold: 0.2,
+    threshold: 0.4,
     rootMargin: '-50px',
     triggerOnce: true,
   });
