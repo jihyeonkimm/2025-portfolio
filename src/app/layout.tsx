@@ -9,8 +9,24 @@ interface RootLayoutProps {
 }
 
 export const metadata: Metadata = {
-  title: 'Jihyeon Kim Portfolio',
+  title: 'Jihyeon Kim',
   description: 'Jihyeon Kim Portfolio',
+  openGraph: {
+    title: 'Jihyeon Kim',
+    description: 'Jihyeon Kim Portfolio',
+    url: 'https://jhkim-work.com',
+    siteName: 'Jihyeon Kim Portfolio',
+    images: [
+      {
+        url: '/assets/images/og-image.png',
+        width: 1200,
+        height: 630,
+        alt: 'Portfolio preview image',
+      },
+    ],
+    locale: 'ko_KR',
+    type: 'website',
+  },
 };
 
 export default function RootLayout({ children, modal }: RootLayoutProps) {
