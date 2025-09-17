@@ -217,7 +217,7 @@ export const DetailListTitle = styled.strong`
 export const DetailList = styled.ul`
   display: flex;
   flex-direction: column;
-  gap: 25px;
+  gap: 50px;
   margin-top: 30px;
 
   ${({ theme }) => theme.responsive.mobile} {
@@ -228,27 +228,28 @@ export const DetailList = styled.ul`
 export const DetailItem = styled.li`
   display: flex;
   flex-direction: column;
-  gap: 8px;
+  gap: 20px;
 `;
 
 export const DetailItemTitle = styled.p`
   color: ${({ theme }) => theme.color.common.white};
-  font-size: 1.8rem;
-  font-weight: 500;
+  font-size: 2.2rem;
+  font-weight: 600;
   line-height: 140%;
+  letter-spacing: -0.5px;
 
   ${({ theme }) => theme.responsive.mobile} {
-    font-size: 1.6rem;
+    font-size: 1.8rem;
   }
 `;
 
 export const DetailItemText = styled.span`
   position: relative;
   display: flex;
-  color: ${({ theme }) => theme.color.common.white};
+  color: ${({ theme }) => theme.color.primary.lightgray};
   font-size: 1.6rem;
-  letter-spacing: -0.5px;
-  line-height: 140%;
+  letter-spacing: -0.3px;
+  line-height: 145%;
 
   &::before {
     content: '';
