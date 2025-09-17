@@ -15,7 +15,7 @@ const ImageComponent = ({ storagePath, alt, height }: ImageComponentProps) => {
   const { imageUrl, loading, error } = useFirebaseImage(storagePath);
 
   if (loading) {
-    return null; // 또는 로딩 스피너
+    return null;
   }
 
   if (error || !imageUrl) {

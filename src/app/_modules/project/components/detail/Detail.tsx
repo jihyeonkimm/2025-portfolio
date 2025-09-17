@@ -27,7 +27,10 @@ const ProjectDetail = ({ projectName }: ProjectDetailProps) => {
         <S.ProjectDetailInner>
           <S.ProjectTitleContainer>
             <S.ProjectCover>
-              <ImageComponent storagePath={currentProject.cover} alt={currentProject.title} />
+              <ImageComponent
+                storagePath={currentProject.cover ?? ''}
+                alt={currentProject.title ?? ''}
+              />
               <S.ProjectLogo>
                 <Image
                   src={`/assets/images/project-logo/${currentProject.id}.svg`}
