@@ -49,7 +49,13 @@ export const ContactLink = styled(Link)`
 
   @media (hover: hover) {
     &:hover {
-      color: ${({ theme }) => theme.color.primary.blue};
+      background: linear-gradient(
+        180deg,
+        ${({ theme }) => theme.color.primary.blue},
+        ${({ theme }) => theme.color.primary.purple}
+      );
+      background-clip: text;
+      -webkit-text-fill-color: transparent;
     }
   }
 

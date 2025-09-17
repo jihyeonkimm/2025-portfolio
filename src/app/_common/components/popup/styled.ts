@@ -52,8 +52,11 @@ export const Overlay = styled.div<{ $isClosing: boolean }>`
   width: 100%;
   height: 100%;
   background-color: rgba(0, 0, 0, 0.7);
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
   z-index: 1000;
-  animation: ${({ $isClosing }) => ($isClosing ? fadeOut : fadeIn)} 0.3s ease-in-out forwards;
+  animation: ${({ $isClosing }) => ($isClosing ? fadeOut : fadeIn)} 0.3s
+    cubic-bezier(0.77, 0, 0.175, 1) forwards;
 `;
 
 export const PopupContainer = styled.div<{ $isClosing: boolean }>`
@@ -64,8 +67,11 @@ export const PopupContainer = styled.div<{ $isClosing: boolean }>`
   max-width: 960px;
   height: calc(100dvh - 80px);
   max-height: 90vh;
-  padding: 20px 10px 20px 20px;
-  background-color: ${({ theme }) => theme.color.common.white};
+  /* padding: 0px 10px 0px 20px; */
+  background: rgba(18, 18, 18, 0.8);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  box-shadow: 0 0 0 1px #28282a;
   border-radius: 20px;
   overflow: hidden;
   transform: scale(0.95) translate(-50%, -50%);
@@ -76,15 +82,14 @@ export const PopupContainer = styled.div<{ $isClosing: boolean }>`
 
 export const PopupChildrenContainer = styled.div`
   width: 100%;
-  height: calc(100% - 40px);
-  padding: 0 10px 20px 0;
+  height: 100%;
   overflow-y: auto;
 `;
 
 export const CloseButton = styled.button`
-  position: sticky;
+  position: absolute;
   top: 10px;
-  left: 100%;
+  right: 10px;
   margin-right: 15px;
   cursor: pointer;
   z-index: 1001;

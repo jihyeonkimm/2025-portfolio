@@ -85,7 +85,7 @@ export const ProjectItemImage = styled.span<{ $isVisible: boolean }>`
     left: 0;
     width: 100%;
     height: 100%;
-    background-color: ${({ theme }) => theme.color.primary.blue};
+    background: linear-gradient(90deg, #007dc8 19%, #6e28b4 95%);
 
     ${({ $isVisible }) =>
       $isVisible &&

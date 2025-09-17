@@ -42,6 +42,18 @@ export const IntroWrapper = styled.div`
   }
 `;
 
+export const GradientText = styled.p`
+  display: inline-block;
+  background: linear-gradient(
+    90deg,
+    ${({ theme }) => theme.color.primary.blue},
+    ${({ theme }) => theme.color.primary.purple}
+  );
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+  font-weight: 700;
+`;
+
 export const IntroList = styled.ul`
   display: flex;
   flex-direction: column;

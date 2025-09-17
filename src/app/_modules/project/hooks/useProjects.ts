@@ -15,6 +15,7 @@ interface Project {
     },
   ];
   link?: string;
+  cover?: string;
 }
 
 export const useProjects = () => {

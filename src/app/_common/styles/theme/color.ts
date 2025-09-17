@@ -17,8 +17,8 @@ export type Color = {
 
 export const color: Color = {
   common: {
-    black: '#333',
-    white: '#ffffff',
+    black: '#111',
+    white: '#eeeeee',
   },
   primary: {
     blue: '#009fff',

@@ -6,6 +6,7 @@ import * as S from './styled';
 import Image from 'next/image';
 import Link from 'next/link';
 import Loading from '../loading/Loading';
+import ImageComponent from '@/app/_common/components/image-component/ImageComponent';
 
 interface ProjectDetailProps {
   projectName: string;
@@ -25,15 +26,18 @@ const ProjectDetail = ({ projectName }: ProjectDetailProps) => {
       {currentProject ? (
         <S.ProjectDetailInner>
           <S.ProjectTitleContainer>
-            <S.ProjectLogo>
-              <Image
-                src={`/assets/images/project-logo/${currentProject.id}.svg`}
-                alt='프로젝트 로고'
-                fill
-                sizes='100%'
-              />
-            </S.ProjectLogo>
-            <S.ProjectDetailTitle>{currentProject.title}</S.ProjectDetailTitle>
+            <S.ProjectCover>
+              <ImageComponent storagePath={currentProject.cover} alt={currentProject.title} />
+              <S.ProjectLogo>
+                <Image
+                  src={`/assets/images/project-logo/${currentProject.id}.svg`}
+                  alt='프로젝트 로고'
+                  fill
+                  sizes='100%'
+                />
+              </S.ProjectLogo>
+              <S.ProjectDetailTitle>{currentProject.title}</S.ProjectDetailTitle>
+            </S.ProjectCover>
             <S.ProjectTitleList>
               <S.ProjectTitleItem>
                 <S.DetailTitle>프로젝트 이름</S.DetailTitle>

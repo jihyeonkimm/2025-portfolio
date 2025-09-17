@@ -1,12 +1,11 @@
 import styled from 'styled-components';
 
 export const StyledPageContainer = styled.div`
+  position: relative;
   width: 100%;
-  padding: 7rem 16rem;
-  background-color: ${({ theme }) => theme.color.common.white};
+  background-color: ${({ theme }) => theme.color.common.black};
 
   ${({ theme }) => theme.responsive.mobile} {
-    padding: 70px 20px;
   }
 `;
 
@@ -19,10 +18,12 @@ export const HomeButton = styled.button`
   gap: 0 10px;
   width: 100%;
   padding: 20px;
+  color: ${({ theme }) => theme.color.common.white};
   font-size: 1.8rem;
   letter-spacing: -0.5px;
   line-height: 140%;
   cursor: pointer;
+  z-index: 1;
 
   ${({ theme }) => theme.responsive.mobile} {
     backdrop-filter: blur(10px);

@@ -98,7 +98,7 @@ const IntroSection = () => {
           <SectionTitle
             title={
               <>
-                적극적으로 개발하고 <br />
+                <S.GradientText>적극적으로 개발</S.GradientText>하고 <br />
                 협업 중심으로 사고합니다.
               </>
             }

@@ -5,7 +5,6 @@ export const StyledLoadingContainer = styled.div`
   max-width: 960px;
   margin: 20px 0;
   padding: 20px;
-  background-color: ${({ theme }) => theme.color.common.white};
 
   ${({ theme }) => theme.responsive.mobile} {
     margin: 0 0 20px;

@@ -2,22 +2,44 @@ import styled from 'styled-components';
 
 export const ProjectDetailContainer = styled.div`
   width: 100%;
-  max-width: 960px;
-  padding: 20px;
-  background-color: ${({ theme }) => theme.color.common.white};
+  /* padding: 20px; */
+  /* background-color: ${({ theme }) => theme.color.common.white}; */
 
   ${({ theme }) => theme.responsive.mobile} {
-    margin: 0 0 20px;
-    padding: 5px;
+    /* margin: 0 0 20px;
+    padding: 5px; */
   }
 `;
 
 export const ProjectDetailInner = styled.div``;
 
-export const ProjectTitleContainer = styled.div`
-  padding-bottom: 40px;
-  margin-bottom: 40px;
-  border-bottom: 1px solid ${({ theme }) => theme.color.primary.lightgray};
+export const ProjectTitleContainer = styled.div``;
+
+export const ProjectCover = styled.div`
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  min-height: 450px;
+
+  &::after {
+    content: '';
+    display: block;
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(180deg, rgba(18, 18, 18, 0.1) 0%, rgba(18, 18, 18, 0.9) 100%);
+  }
+
+  & > div {
+    position: absolute;
+  }
+
+  ${({ theme }) => theme.responsive.mobile} {
+    min-height: 250px;
+  }
 `;
 
 export const ProjectLogo = styled.span`
@@ -25,7 +47,9 @@ export const ProjectLogo = styled.span`
   display: block;
   width: 150px;
   height: 50px;
+  margin-left: 20px;
   margin-bottom: 20px;
+  z-index: 1;
 
   & img {
     position: absolute;
@@ -38,17 +62,24 @@ export const ProjectLogo = styled.span`
   ${({ theme }) => theme.responsive.mobile} {
     width: 70px;
     height: 30px;
+    margin-left: 20px;
+    margin-bottom: 10px;
   }
 `;
 
 export const ProjectDetailTitle = styled.strong`
+  position: relative;
+  margin: 0 30px 20px;
+  color: ${({ theme }) => theme.color.common.white};
   font-size: 4rem;
   font-weight: 600;
   letter-spacing: -1px;
   line-height: 140%;
+  z-index: 1;
 
   ${({ theme }) => theme.responsive.mobile} {
-    font-size: 3rem;
+    margin: 0 20px 20px;
+    font-size: 2.6rem;
     line-height: 120%;
   }
 `;
@@ -58,9 +89,11 @@ export const ProjectTitleList = styled.ul`
   flex-direction: column;
   gap: 20px;
   margin-top: 60px;
+  padding: 0 24px;
 
   ${({ theme }) => theme.responsive.mobile} {
     margin-top: 40px;
+    padding: 0 20px;
   }
 `;
 
@@ -81,6 +114,7 @@ export const DetailTitle = styled.p`
 `;
 
 export const DetailText = styled.p`
+  color: ${({ theme }) => theme.color.common.white};
   font-size: 1.8rem;
   letter-spacing: -0.5px;
   line-height: 140%;
@@ -160,9 +194,18 @@ export const SkillImageContainer = styled.li`
   }
 `;
 
-export const DetailListContainer = styled.div``;
+export const DetailListContainer = styled.div`
+  padding: 40px 0;
+  margin: 40px 24px 0;
+  border-top: 1px solid ${({ theme }) => theme.color.primary.lightgray};
+
+  ${({ theme }) => theme.responsive.mobile} {
+    margin: 40px 20px 0;
+  }
+`;
 
 export const DetailListTitle = styled.strong`
+  color: ${({ theme }) => theme.color.common.white};
   font-size: 2rem;
   line-height: 140%;
 
@@ -189,6 +232,7 @@ export const DetailItem = styled.li`
 `;
 
 export const DetailItemTitle = styled.p`
+  color: ${({ theme }) => theme.color.common.white};
   font-size: 1.8rem;
   font-weight: 500;
   line-height: 140%;
@@ -201,6 +245,7 @@ export const DetailItemTitle = styled.p`
 export const DetailItemText = styled.span`
   position: relative;
   display: flex;
+  color: ${({ theme }) => theme.color.common.white};
   font-size: 1.6rem;
   letter-spacing: -0.5px;
   line-height: 140%;
@@ -214,7 +259,7 @@ export const DetailItemText = styled.span`
     height: 4px;
     margin-right: 6px;
     border-radius: 100px;
-    background-color: ${({ theme }) => theme.color.common.black};
+    background-color: ${({ theme }) => theme.color.common.white};
     transform: translateY(7px);
   }
 
