@@ -77,9 +77,7 @@ const IntroSection = () => {
 
   // 각 단계별 opacity 계산 (0 또는 1만 반환)
   const getOpacity = (index: number) => {
-    const progress = calculateScroll();
-
-    console.log('currentStep', currentStep, 'index', index, 'progress', progress);
+    // const progress = calculateScroll();
 
     // 현재 단계와 정확히 일치할 때만 1, 나머지는 0
     return currentStep === index ? 1 : 0;
