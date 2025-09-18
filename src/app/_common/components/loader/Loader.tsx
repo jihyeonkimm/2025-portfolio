@@ -9,7 +9,7 @@ const Loader = () => {
       <S.Logo>
         <Image src='/assets/images/logo.png' alt='logo' fill sizes='100%' />
       </S.Logo>
-      <S.LoaderText>Loading...</S.LoaderText>
+      <S.LoaderText>Loading</S.LoaderText>
     </S.LoaderContainer>
   );
 };

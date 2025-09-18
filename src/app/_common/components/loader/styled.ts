@@ -11,7 +11,7 @@ export const LoaderContainer = styled.div`
   justify-content: center;
   align-items: center;
   backdrop-filter: blur(10px);
-  background-color: rgba(255, 255, 255, 0.3);
+  background-color: rgba(0, 0, 0, 0.3);
 `;
 
 export const Logo = styled.div`
@@ -27,7 +27,9 @@ export const Logo = styled.div`
 `;
 
 export const LoaderText = styled.p`
-  font-size: 1.2rem;
+  color: ${({ theme }) => theme.color.common.white};
+  font-size: 1.6rem;
+  font-weight: 600;
   letter-spacing: -0.1px;
   line-height: 140%;
 `;

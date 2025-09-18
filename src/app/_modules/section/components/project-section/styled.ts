@@ -10,11 +10,11 @@ export const ProjectList = styled.ul`
   position: relative;
   display: flex;
   flex-direction: column;
-  gap: 70px;
+  gap: 150px;
   margin: 10rem 0;
 
   ${({ theme }) => theme.responsive.mobile} {
-    gap: 40px;
+    gap: 100px;
     margin-top: 60px;
   }
 `;

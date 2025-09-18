@@ -19,7 +19,7 @@ const ContactSection = () => {
             <S.ContactItem>
               <S.ContactItemTitle>More About</S.ContactItemTitle>
               <S.ContactLink
-                href='https://drive.google.com/file/d/1LWo0ebHSbBAqiVPPOfuljMxdAPvS0aRK/view?usp=sharing'
+                href='https://drive.google.com/file/d/1Djjt0hdAjS4_fcTIhBzmkJFQiDbiLGQ1/view?usp=sharing'
                 target='_blank'
               >
                 CV
