@@ -18,10 +18,7 @@ const ContactSection = () => {
             </S.ContactItem>
             <S.ContactItem>
               <S.ContactItemTitle>More About</S.ContactItemTitle>
-              <S.ContactLink
-                href='https://drive.google.com/file/d/1Djjt0hdAjS4_fcTIhBzmkJFQiDbiLGQ1/view?usp=sharing'
-                target='_blank'
-              >
+              <S.ContactLink href='/assets/file/jihyeonkim-cv.pdf' download target='_blank'>
                 CV
               </S.ContactLink>
               <S.ContactLink href='https://jh-log.tistory.com/' target='_blank'>
