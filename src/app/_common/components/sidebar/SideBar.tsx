@@ -1,9 +1,10 @@
 import React from 'react';
 import * as S from './styled';
 import Image from 'next/image';
+import { SectionId } from '../header/Header';
 
 interface SideBarProps {
-  activeSection: 'about' | 'projects';
+  activeSection: SectionId;
 }
 
 const SideBar = ({ activeSection }: SideBarProps) => {

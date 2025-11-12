@@ -6,7 +6,7 @@ import Image from 'next/image';
 import Link from 'next/link';
 import { useIsMobile } from '@/app/hooks/useIsMobile';
 
-type SectionId = 'home' | 'about' | 'projects' | 'contact';
+export type SectionId = 'home' | 'about' | 'projects' | 'contact';
 
 interface HeaderProps {
   activeSection: SectionId;
