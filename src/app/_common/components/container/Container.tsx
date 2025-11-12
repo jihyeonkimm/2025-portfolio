@@ -1,6 +1,7 @@
 'use client';
 
 import Header from '../header/Header';
+import SideBar from '../sidebar/SideBar';
 import * as S from './styled';
 import useActiveSection from '@/app/hooks/useActiveSection';
 
@@ -20,6 +21,7 @@ const Container = ({ children }: ContainerProps) => {
       />
 
       {children}
+      <SideBar activeSection={activeSection} />
     </S.StyledContainer>
   );
 };
