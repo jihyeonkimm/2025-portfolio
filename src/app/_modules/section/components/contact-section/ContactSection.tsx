@@ -21,7 +21,10 @@ const ContactSection = () => {
               <S.ContactLink href='/assets/file/jihyeonkim-cv.pdf' download target='_blank'>
                 CV
               </S.ContactLink>
-              <S.ContactLink href='https://jh-log.tistory.com/' target='_blank'>
+              <S.ContactLink href='/assets/file/jihyeonkim-cv.pdf' download target='_blank'>
+                Portfolio
+              </S.ContactLink>
+              <S.ContactLink href='https://jhkim-blog.com' target='_blank'>
                 Blog
               </S.ContactLink>
               <S.ContactLink href='https://github.com/jihyeonkimm' target='_blank'>
