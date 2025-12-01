@@ -2,6 +2,7 @@ import type { Metadata } from 'next';
 import StyledComponentsRegistry from './lib/registry';
 import GlobalStyle from './_common/styles/globalStyles';
 import ClientThemeProvider from './lib/ThemeProvider';
+import { Analytics } from '@vercel/analytics/next';
 
 interface RootLayoutProps {
   children: React.ReactNode;
@@ -40,6 +41,8 @@ export default function RootLayout({ children, modal }: RootLayoutProps) {
             {modal}
           </ClientThemeProvider>
         </StyledComponentsRegistry>
+
+        <Analytics />
       </body>
     </html>
   );

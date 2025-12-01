@@ -10,6 +10,7 @@
     "svgr": "npx @svgr/cli --out-dir src/app/_common/assets/icons/components --no-index src/app/_common/assets/icons"
   },
   "dependencies": {
+    "@vercel/analytics": "^1.5.0",
     "firebase": "^12.1.0",
     "lottie-react": "^2.4.1",
     "next": "15.3.5",
