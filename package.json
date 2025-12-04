@@ -13,10 +13,10 @@
     "@vercel/analytics": "^1.5.0",
     "firebase": "^12.1.0",
     "lottie-react": "^2.4.1",
-    "next": "15.3.5",
-    "react": "^19.0.0",
+    "next": "15.3.6",
+    "react": "^19.0.1",
     "react-device-detect": "^2.2.3",
-    "react-dom": "^19.0.0",
+    "react-dom": "^19.0.1",
     "styled-components": "^6.1.19",
     "styled-reset": "^4.5.2"
   },
