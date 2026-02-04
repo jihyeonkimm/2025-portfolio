@@ -3,7 +3,7 @@ import styled from 'styled-components';
 export const StyledPageContainer = styled.div`
   position: relative;
   width: 100%;
-  background-color: ${({ theme }) => theme.color.common.black};
+  background-color: ${({ theme }) => theme.color.common.white};
 
   ${({ theme }) => theme.responsive.mobile} {
   }
@@ -24,6 +24,7 @@ export const HomeButton = styled.button`
   line-height: 140%;
   cursor: pointer;
   z-index: 1;
+  filter: drop-shadow(0 0 5px rgba(0, 0, 0, 0.8));
 
   ${({ theme }) => theme.responsive.mobile} {
     backdrop-filter: blur(10px);

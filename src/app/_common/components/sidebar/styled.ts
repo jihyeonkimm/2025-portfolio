@@ -11,13 +11,17 @@ export const SideBarContainer = styled.div<{ $show: boolean }>`
   align-items: center;
   gap: 10px;
   padding: 10px 6px;
-  background: rgba(49, 49, 49, 0.8);
-  backdrop-filter: blur(20px);
-  box-shadow: 0 0 0 1px #28282a;
+  background: rgba(125, 125, 125, 0.23);
+  box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+  backdrop-filter: blur(4.8px);
+  -webkit-backdrop-filter: blur(4.8px);
+  border: 1px solid rgba(125, 125, 125, 0.19);
   border-radius: 100px;
   opacity: ${({ $show }) => ($show ? 1 : 0)};
   visibility: ${({ $show }) => ($show ? 'visible' : 'hidden')};
-  transition: opacity 0.3s, visibility 0.3s;
+  transition:
+    opacity 0.3s,
+    visibility 0.3s;
 
   ${({ theme }) => theme.responsive.mobile} {
     display: none;

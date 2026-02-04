@@ -12,6 +12,7 @@
   "dependencies": {
     "@vercel/analytics": "^1.5.0",
     "firebase": "^12.1.0",
+    "lottie-colorify": "^0.8.0",
     "lottie-react": "^2.4.1",
     "next": "15.3.6",
     "react": "^19.0.1",

@@ -18,11 +18,15 @@ export const StyledHeader = styled.header<{ $scrollStart: boolean }>`
   ${({ $scrollStart }) =>
     $scrollStart &&
     css`
-      transform: translate(-50%, 20px);
+      transform: translate(-50%, 15px);
       width: 80%;
-      background: rgba(18, 18, 18, 0.8);
-      backdrop-filter: blur(20px);
-      box-shadow: 0 0 0 1px #28282a;
+      padding: 0px 20px;
+      background: rgba(255, 255, 255, 0.18);
+      border-radius: 16px;
+      box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+      backdrop-filter: blur(6.3px);
+      -webkit-backdrop-filter: blur(6.3px);
+      border: 1px solid rgba(255, 255, 255, 0.27);
       border-radius: 100px;
     `}
 
@@ -78,9 +82,9 @@ export const MenuList = styled.ul`
 
 export const MenuItem = styled.li<{ $isActive?: boolean }>`
   color: ${({ theme, $isActive }) =>
-    $isActive ? theme.color.common.white : theme.color.primary.gray};
+    $isActive ? theme.color.primary.orange : theme.color.primary.gray};
   font-size: 1.6rem;
-  font-weight: 500;
+  font-weight: 400;
   line-height: 30px;
   padding: 0px 10px;
   border-radius: 40px;
@@ -88,7 +92,7 @@ export const MenuItem = styled.li<{ $isActive?: boolean }>`
   transition: color 0.2s ease;
 
   &:hover {
-    color: ${({ theme }) => theme.color.primary.blue};
+    color: ${({ theme }) => theme.color.primary.orange};
   }
 `;
 
@@ -112,7 +116,7 @@ export const MenuLine = styled.span`
     width: 100%;
     height: 2px;
     border-radius: 50px;
-    background-color: ${({ theme }) => theme.color.common.white};
+    background-color: ${({ theme }) => theme.color.common.black};
   }
 `;
 
@@ -131,8 +135,10 @@ export const MobileMenuContainer = styled.div<{ $isClosing: boolean }>`
     justify-content: center;
     align-items: center;
     gap: 20px;
-    backdrop-filter: blur(40px);
-    background-color: rgba(0, 0, 0, 0.6);
+    background: rgba(255, 255, 255, 0.5);
+    /* box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1); */
+    backdrop-filter: blur(9px);
+    -webkit-backdrop-filter: blur(9px);
     z-index: 1300;
 
     ${({ $isClosing }) =>

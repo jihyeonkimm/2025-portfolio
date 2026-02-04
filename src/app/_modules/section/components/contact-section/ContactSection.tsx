@@ -9,7 +9,7 @@ const ContactSection = () => {
   return (
     <S.StyledContactSection id='contact'>
       <Inner>
-        <SectionTitle title='Contact' />
+        <SectionTitle title='Contact' color='white' />
         <S.ContactContainer>
           <S.ContactList>
             <S.ContactItem>

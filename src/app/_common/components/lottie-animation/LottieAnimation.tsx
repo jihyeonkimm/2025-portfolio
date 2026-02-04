@@ -1,5 +1,6 @@
 import React from 'react';
 import Lottie, { LottieComponentProps } from 'lottie-react';
+import { colorify } from 'lottie-colorify';
 
 type Props = {
   animationData: LottieComponentProps['animationData'];
@@ -9,6 +10,7 @@ type Props = {
   autoplay?: boolean;
   className?: string;
   speed?: number;
+  color?: string;
   onComplete?: () => void;
   onLoopComplete?: () => void;
 };
@@ -20,6 +22,7 @@ const LottieAnimation = ({
   loop = true,
   autoplay = true,
   className,
+  color,
   onComplete,
   onLoopComplete,
 }: Props) => {
@@ -28,9 +31,11 @@ const LottieAnimation = ({
     height: typeof height === 'number' ? `${height}px` : height,
   };
 
+  const coloredData = color ? colorify([color], animationData) : animationData;
+
   return (
     <Lottie
-      animationData={animationData}
+      animationData={coloredData}
       loop={loop}
       autoplay={autoplay}
       style={style}

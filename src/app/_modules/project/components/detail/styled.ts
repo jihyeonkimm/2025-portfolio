@@ -114,7 +114,7 @@ export const DetailTitle = styled.p`
 `;
 
 export const DetailText = styled.p`
-  color: ${({ theme }) => theme.color.common.white};
+  color: ${({ theme }) => theme.color.common.black};
   font-size: 1.8rem;
   letter-spacing: -0.5px;
   line-height: 140%;
@@ -145,7 +145,7 @@ export const SkillTooltip = styled.span`
   color: ${({ theme }) => theme.color.common.white};
   font-size: 1.3rem;
   text-align: center;
-  background-color: ${({ theme }) => theme.color.primary.blue};
+  background-color: ${({ theme }) => theme.color.primary.orange};
   opacity: 0;
   visibility: hidden;
   transition: 0.25s;
@@ -205,7 +205,7 @@ export const DetailListContainer = styled.div`
 `;
 
 export const DetailListTitle = styled.strong`
-  color: ${({ theme }) => theme.color.common.white};
+  color: ${({ theme }) => theme.color.common.black};
   font-size: 2rem;
   line-height: 140%;
 
@@ -232,7 +232,7 @@ export const DetailItem = styled.li`
 `;
 
 export const DetailItemTitle = styled.p`
-  color: ${({ theme }) => theme.color.common.white};
+  color: ${({ theme }) => theme.color.common.black};
   font-size: 2.2rem;
   font-weight: 600;
   line-height: 140%;
@@ -246,7 +246,7 @@ export const DetailItemTitle = styled.p`
 export const DetailItemText = styled.span`
   position: relative;
   display: flex;
-  color: ${({ theme }) => theme.color.primary.lightgray};
+  color: ${({ theme }) => theme.color.primary.darkgray};
   font-size: 1.6rem;
   letter-spacing: -0.3px;
   line-height: 145%;

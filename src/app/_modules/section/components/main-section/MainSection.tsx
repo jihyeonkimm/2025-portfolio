@@ -7,30 +7,6 @@ import LottieAnimation from '@/app/_common/components/lottie-animation/LottieAni
 import mouse from '@public/assets/lottie/mouse.json';
 import { useIsMobile } from '@/app/hooks/useIsMobile';
 
-interface TextDataProps {
-  id: number;
-  text: string;
-  color?: string;
-}
-
-const textData: TextDataProps[] = [
-  { id: 1, text: 'PROACTIVE ', color: 'blue' },
-  { id: 2, text: 'DEVELOPER,' },
-  { id: 3, text: '\n' },
-  { id: 4, text: 'COLLABORATIVE ' },
-  { id: 5, text: 'MINDSET', color: 'blue' },
-];
-
-const mobileTextData: TextDataProps[] = [
-  { id: 1, text: 'PROACTIVE', color: 'blue' },
-  { id: 2, text: '\n' },
-  { id: 3, text: 'DEVELOPER,' },
-  { id: 4, text: '\n' },
-  { id: 5, text: 'COLLABORATIVE' },
-  { id: 6, text: '\n' },
-  { id: 7, text: 'MINDSET', color: 'blue' },
-];
-
 const MainSection = () => {
   const isMobileView = useIsMobile();
   const [firstTagPosition, setFirstTagPosition] = useState<{ x: number; y: number }>({
@@ -41,34 +17,6 @@ const MainSection = () => {
     x: 30,
     y: -15,
   });
-  const [isPlaying, setIsPlaying] = useState<boolean>(false);
-
-  const createTextArray = () => {
-    const textArray: TextDataProps[] = [];
-    let textIndex = 0;
-    const selectedTextData = isMobileView ? mobileTextData : textData;
-
-    selectedTextData.forEach(({ text, color }) => {
-      text.split('').forEach((char) => {
-        textArray.push({
-          id: textIndex++,
-          text: char === ' ' ? '\u00A0' : char,
-          color,
-        });
-      });
-    });
-
-    return textArray;
-  };
-
-  const textArray = createTextArray();
-
-  const playAnimation = () => {
-    setIsPlaying(false);
-    setTimeout(() => {
-      setIsPlaying(true);
-    }, 100);
-  };
 
   const handleMouseMove = (event: MouseEvent) => {
     if (isMobileView) return;
@@ -107,7 +55,6 @@ const MainSection = () => {
 
   useEffect(() => {
     document.addEventListener('mousemove', handleMouseMove);
-    playAnimation();
 
     return () => {
       document.removeEventListener('mousemove', handleMouseMove);
@@ -116,12 +63,6 @@ const MainSection = () => {
 
   return (
     <S.StyledMainContainer id='home'>
-      <S.BlurContainer>
-        <S.Blob className='blob1' />
-        <S.Blob className='blob2' />
-        <S.Blob className='blob3' />
-      </S.BlurContainer>
-
       <S.Tag
         style={{
           transform: isMobileView
@@ -132,25 +73,16 @@ const MainSection = () => {
         <S.Dot />
         Front-End Developer
       </S.Tag>
-
       <S.MainTitle>
-        {textArray.map(({ id, text, color }) => {
-          if (text === '\n') {
-            return <br key={`br-${id}`} />;
-          }
-          return (
-            <S.MainTitleText
-              key={`${id}-${text}`}
-              $isPlaying={isPlaying}
-              $color={color}
-              style={{ animationDelay: `${id * 0.05}s` }}
-            >
-              {text}
-            </S.MainTitleText>
-          );
-        })}
+        <S.TitleTextWrapper>
+          <S.MainTitleText>
+            proactive <S.MainEmpText>developer</S.MainEmpText>,
+          </S.MainTitleText>
+        </S.TitleTextWrapper>
+        <S.TitleTextWrapper>
+          <S.MainTitleText>collaborative mindset</S.MainTitleText>
+        </S.TitleTextWrapper>
       </S.MainTitle>
-
       <S.Tag
         style={{
           transform: isMobileView
@@ -161,9 +93,8 @@ const MainSection = () => {
         <S.Dot />
         Jihyeon ☺
       </S.Tag>
-
       <S.LottieContainer>
-        <LottieAnimation animationData={mouse} width={50} height={70} />
+        <LottieAnimation animationData={mouse} width={50} height={70} color={'#808080'} />
       </S.LottieContainer>
     </S.StyledMainContainer>
   );

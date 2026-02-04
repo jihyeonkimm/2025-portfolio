@@ -13,8 +13,8 @@ const GlobalStyle = createGlobalStyle`
 	}
 
 	html, body {
-		/* color: #fff; */
-		background-color: #111;
+		color: #191919;
+		background-color: #ffffff;
 		font-size: 62.5%;
 		font-family: 'Pretendard', sans-serif;
 

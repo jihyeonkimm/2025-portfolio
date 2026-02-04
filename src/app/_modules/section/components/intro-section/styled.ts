@@ -1,36 +1,40 @@
 // import { animation } from '@/app/_common/styles/theme/keyframes';
 import styled from 'styled-components';
 
-export const StyledIntroSection = styled.section`
+export const FixedSection = styled.div<{ $bgOpacity: number }>`
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(246, 245, 244, ${({ $bgOpacity }) => $bgOpacity});
+`;
+
+export const TitleSection = styled.div`
+  width: 100%;
+  height: 100dvh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+`;
+
+export const StyledIntroSection = styled.section<{ $bgOpacity: number }>`
   position: relative;
   height: 400vh;
+  background-color: rgba(246, 245, 244, 1);
 `;
 
 export const StickyWrapper = styled.div`
   position: sticky;
   top: 0;
   height: 100dvh;
-  padding-top: 12rem;
+  /* padding-top: 12rem; */
 
   ${({ theme }) => theme.responsive.mobile} {
-    padding-top: 5rem;
+    /* padding-top: 5rem; */
   }
 `;
-
-// export const IntroText = styled.p<{ $isVisible: boolean }>`
-//   margin-top: 3rem;
-//   color: ${({ theme }) => theme.color.primary.gray};
-//   font-size: 2.5rem;
-//   letter-spacing: -0.5px;
-//   opacity: 0;
-//   transform: translateY(20px);
-
-//   ${({ $isVisible }) => $isVisible && animation.showElement('0.5s', '0s')}
-
-//   ${({ theme }) => theme.responsive.mobile} {
-//     font-size: 1.6rem;
-//   }
-// `;
 
 export const IntroWrapper = styled.div`
   position: absolute;
@@ -71,44 +75,42 @@ export const IntroItem = styled.li`
   left: 50%;
   transform: translate(-50%, -50%);
   transform-origin: center;
+  width: 80%;
   display: flex;
-  flex-direction: column;
   align-items: center;
   align-self: stretch;
+  gap: 0 2rem;
   padding: 2rem;
-  /* background: rgba(0, 0, 0, 0.16);
-  box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
-  backdrop-filter: blur(5.9px);
-  -webkit-backdrop-filter: blur(5.9px);
-  border-radius: 16px;
-  border: 1px solid rgba(0, 0, 0, 0.12); */
   transition: 0.3s;
-
-  @media (hover: hover) {
-    &:hover {
-      /* background-color: ${({ theme }) => theme.color.common.white};
-      border-color: ${({ theme }) => theme.color.background.gray}; */
-      box-shadow: 0 10px 20px rgba(0, 0, 0, 0.05);
-    }
-  }
 
   ${({ theme }) => theme.responsive.tablet} {
     padding: 1.5rem;
   }
 
   ${({ theme }) => theme.responsive.mobile} {
+    flex-direction: column;
+    justify-content: center;
     width: calc(100% - 40px);
     padding: 1.2rem;
   }
 `;
 
+export const IntroTextWrapper = styled.div`
+  ${({ theme }) => theme.responsive.mobile} {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+`;
+
 export const IntroItemTitle = styled.strong`
-  color: ${({ theme }) => theme.color.common.white};
+  color: ${({ theme }) => theme.color.common.black};
   font-size: 2.4rem;
   font-weight: 600;
   line-height: 1.6;
   letter-spacing: -0.5px;
   text-align: center;
+  word-break: keep-all;
 
   ${({ theme }) => theme.responsive.mobile} {
     font-size: 2rem;
@@ -119,26 +121,27 @@ export const IntroItemText = styled.p`
   margin-top: 18px;
   color: ${({ theme }) => theme.color.primary.gray};
   font-size: 1.8rem;
-  font-weight: 600;
-  line-height: 1.43;
-  letter-spacing: 0.011px;
-  text-align: center;
+  line-height: 1.4;
+  letter-spacing: -0.5px;
+  word-break: keep-all;
 
   ${({ theme }) => theme.responsive.mobile} {
     font-size: 1.6rem;
+    text-align: center;
   }
 `;
 
 export const IntroItemIcon = styled.span`
+  flex-shrink: 0;
   position: relative;
   display: block;
-  width: 11rem;
-  height: 11rem;
+  width: 30rem;
+  height: 30rem;
   margin-bottom: 5rem;
 
   ${({ theme }) => theme.responsive.mobile} {
-    width: 9rem;
-    height: 9rem;
+    width: 13rem;
+    height: 13rem;
     margin-bottom: 4rem;
   }
 `;

@@ -4,6 +4,8 @@ import React, { useState } from 'react';
 import { useRouter } from 'next/navigation';
 import ProjectDetail from '@/app/_modules/project/components/detail/Detail';
 import Popup from '@/app/_common/components/popup/Popup';
+import Loading from '@/app/_common/components/loading/Loading';
+import { useProjects } from '@/app/_modules/project/hooks/useProjects';
 
 interface ProjectModalPageProps {
   params: Promise<{
@@ -15,11 +17,16 @@ const ProjectModalPage = ({ params }: ProjectModalPageProps) => {
   const [isOpen, setIsOpen] = useState<boolean>(true);
   const router = useRouter();
   const { projectName } = React.use(params);
+  const { loading } = useProjects();
 
   const handleClose = () => {
     setIsOpen(false);
     router.back();
   };
+
+  if (loading) {
+    return <Loading />;
+  }
 
   return (
     <Popup onClose={handleClose} isOpen={isOpen}>

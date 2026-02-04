@@ -3,25 +3,46 @@ import styled, { css, keyframes } from 'styled-components';
 
 export const StyledProjectSection = styled.section`
   position: relative;
-  padding: 10rem 0;
+  padding: 20rem 0 10rem;
+`;
+
+export const StickyContainer = styled.div`
+  position: relative;
+  height: 60dvh;
+
+  ${({ theme }) => theme.responsive.mobile} {
+    height: 70dvh;
+  }
+`;
+
+export const StickyWrapper = styled.div`
+  position: sticky;
+  top: 150px;
+`;
+
+export const ContentWrapper = styled.div`
+  position: relative;
 `;
 
 export const ProjectList = styled.ul`
   position: relative;
-  display: flex;
-  flex-direction: column;
-  gap: 150px;
-  margin: 10rem 0;
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 4rem 3rem;
+  margin: 20rem 0 10rem;
+  padding: 0 8rem;
 
   ${({ theme }) => theme.responsive.mobile} {
-    gap: 100px;
+    grid-template-columns: 1fr;
+    gap: 30px;
     margin-top: 60px;
+    padding: 0;
   }
 `;
 
 export const ProjectItem = styled.li<{ $isVisible: boolean }>`
   position: relative;
-  width: 50%;
+  width: 100%;
   opacity: 0;
   transform: translateY(20px) translateZ(0) scale(0.9);
   transform-origin: 50% 50%;
@@ -37,33 +58,14 @@ export const ProjectItem = styled.li<{ $isVisible: boolean }>`
   }
 `;
 
-export const ProjectItemButton = styled.button`
-  position: relative;
-  display: flex;
-  flex-direction: column;
-  align-items: flex-start;
-  width: 100%;
-  cursor: pointer;
-`;
-
-const imageOverlay = keyframes`
-  0% {
-    width: 100%;
-    left: 0;
-  }
-  100% {
-    width: 0;
-    left: 100%;
-  }
-`;
-
 export const ProjectItemImage = styled.span<{ $isVisible: boolean }>`
   position: relative;
   display: block;
   width: 100%;
   aspect-ratio: 1 / 0.515;
-  margin-bottom: 30px;
-  border-radius: 20px;
+  margin-bottom: 20px;
+  border-radius: 10px;
+  box-shadow: 0 0 10px rgba(166, 166, 166, 0.3);
   overflow: hidden;
 
   ${({ theme }) => theme.responsive.mobile} {
@@ -85,31 +87,61 @@ export const ProjectItemImage = styled.span<{ $isVisible: boolean }>`
     left: 0;
     width: 100%;
     height: 100%;
-    background: linear-gradient(90deg, #007dc8 19%, #6e28b4 95%);
+    background: rgba(255, 255, 255, 0.18);
+    border-radius: 16px;
+    box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+    backdrop-filter: blur(6.3px);
+    -webkit-backdrop-filter: blur(6.3px);
+    border: 1px solid rgba(255, 255, 255, 0.27);
 
     ${({ $isVisible }) =>
       $isVisible &&
       css`
-        animation: ${imageOverlay} 1s 0.3s cubic-bezier(0.16, 0.57, 0.76, 0.42) forwards;
+        animation: ${imageBlur} 1s 0.3s ease-out forwards;
       `}
-  }
-
-  @media (hover: hover) {
-    &:hover > img {
-      transform: scale(1.05);
-    }
   }
 `;
 
 export const ProjectItemTitle = styled.strong`
-  color: ${({ theme }) => theme.color.common.white};
+  color: ${({ theme }) => theme.color.common.black};
   font-size: 2.2rem;
   font-weight: 500;
   letter-spacing: -0.5px;
   text-align: left;
+  transition: color 0.3s;
 
   ${({ theme }) => theme.responsive.mobile} {
     font-size: 1.6rem;
+  }
+`;
+
+export const ProjectItemButton = styled.button`
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  width: 100%;
+  cursor: pointer;
+
+  @media (hover: hover) {
+    &:hover ${ProjectItemImage} img {
+      transform: scale(1.05);
+    }
+
+    &:hover ${ProjectItemTitle} {
+      color: ${({ theme }) => theme.color.primary.orange};
+    }
+  }
+`;
+
+const imageBlur = keyframes`
+  0% {
+    backdrop-filter: blur(6.3px);
+    opacity: 1;
+  }
+  100% {
+    backdrop-filter: blur(0px);
+    opacity: 0;
   }
 `;
 
@@ -127,10 +159,10 @@ export const ProjectItemTag = styled.span<{ $isVisible: boolean }>`
   margin-top: 10px;
   line-height: 22px;
   padding: 0px 10px;
-  color: ${({ theme }) => theme.color.common.white};
-  border: 1px solid ${({ theme }) => theme.color.common.white};
+  color: ${({ theme }) => theme.color.primary.gray};
+  border: 1px solid ${({ theme }) => theme.color.primary.gray};
   border-radius: 50px;
-  /* background-color: ${({ theme }) => theme.color.common.white}; */
+  background-color: #fff;
   overflow: hidden;
   transition: 0.8s;
   transition-delay: 0.5s;

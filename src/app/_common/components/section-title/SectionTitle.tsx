@@ -7,12 +7,13 @@ import useScroll from '@/app/hooks/useScroll';
 interface SectionTitleProps {
   title: string | React.ReactNode;
   align?: 'left' | 'center' | 'right';
+  color?: string;
 }
 
-const SectionTitle = ({ title, align }: SectionTitleProps) => {
+const SectionTitle = ({ title, align, color }: SectionTitleProps) => {
   const { elementRef, isVisible } = useScroll({
-    threshold: 0.4,
-    rootMargin: '-50px',
+    threshold: 0.6,
+    rootMargin: '-100px',
     triggerOnce: true,
   });
 
@@ -21,6 +22,7 @@ const SectionTitle = ({ title, align }: SectionTitleProps) => {
       ref={elementRef as React.RefObject<HTMLHeadingElement>}
       $isVisible={isVisible}
       $align={align}
+      $color={color}
     >
       {title}
     </S.StyledSectionTitle>

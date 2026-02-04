@@ -67,32 +67,43 @@ export const PopupContainer = styled.div<{ $isClosing: boolean }>`
   max-width: 960px;
   height: calc(100dvh - 80px);
   max-height: 90vh;
-  /* padding: 0px 10px 0px 20px; */
-  background: rgba(18, 18, 18, 0.8);
-  backdrop-filter: blur(20px);
-  -webkit-backdrop-filter: blur(20px);
-  box-shadow: 0 0 0 1px #28282a;
-  border-radius: 20px;
+  background-color: ${({ theme }) => theme.color.common.white};
+  box-shadow: 0 0 5px rgba(135, 134, 134, 0.5);
+  border-radius: 16px;
   overflow: hidden;
   transform: scale(0.95) translate(-50%, -50%);
   transform-origin: top left;
   will-change: transform;
   animation: ${({ $isClosing }) => ($isClosing ? scaleOut : scaleIn)} 0.3s ease-in-out forwards;
+
+  ::-webkit-scrollbar {
+    display: none;
+  }
 `;
 
 export const PopupChildrenContainer = styled.div`
   width: 100%;
   height: 100%;
   overflow-y: auto;
+
+  ::-webkit-scrollbar {
+    display: none;
+  }
 `;
 
 export const CloseButton = styled.button`
   position: absolute;
-  top: 10px;
-  right: 10px;
-  margin-right: 15px;
+  top: 15px;
+  right: 20px;
+  width: 30px;
+  height: 30px;
   cursor: pointer;
   z-index: 1001;
+
+  & > svg {
+    width: 100%;
+    height: 100%;
+  }
 
   ${({ theme }) => theme.responsive.mobile} {
     top: 10px;

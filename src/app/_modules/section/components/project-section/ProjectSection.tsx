@@ -57,17 +57,23 @@ const ProjectItem = ({ item }: { item: DataProps }) => {
 const ProjectSection = () => {
   return (
     <S.StyledProjectSection id='projects'>
-      <Inner>
-        <SectionTitle title='Projects' />
-        {data.length > 0 && (
-          <S.ProjectList>
-            {data.map((item) => (
-              <ProjectItem item={item} key={item.id} />
-            ))}
-          </S.ProjectList>
-        )}
-        {/* <S.MoreButton type='button'>더보기</S.MoreButton> */}
-      </Inner>
+      <S.StickyContainer>
+        <S.StickyWrapper>
+          <SectionTitle title='Featured Works' align='center' />
+        </S.StickyWrapper>
+      </S.StickyContainer>
+      <S.ContentWrapper>
+        <Inner>
+          <SectionTitle title='in Software Development' align='center' />
+          {data.length > 0 && (
+            <S.ProjectList>
+              {data.map((item) => (
+                <ProjectItem item={item} key={item.id} />
+              ))}
+            </S.ProjectList>
+          )}
+        </Inner>
+      </S.ContentWrapper>
     </S.StyledProjectSection>
   );
 };

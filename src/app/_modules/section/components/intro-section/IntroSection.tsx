@@ -25,38 +25,67 @@ const IntroItem = ({ item, style }: { item: DataProps; style?: React.CSSProperti
       <S.IntroItemIcon>
         <Image src={item.img} alt={`${item.title}을 나타내는 이미지`} fill sizes='100%' />
       </S.IntroItemIcon>
-      <S.IntroItemTitle>{item.title}</S.IntroItemTitle>
-      <S.IntroItemText>{item.description}</S.IntroItemText>
+      <S.IntroTextWrapper>
+        <S.IntroItemTitle>{item.title}</S.IntroItemTitle>
+        <S.IntroItemText>{item.description}</S.IntroItemText>
+      </S.IntroTextWrapper>
     </S.IntroItem>
   );
 };
 
 const IntroSection = () => {
   const [currentStep, setCurrentStep] = useState<number>(0);
-  const containerRef = useRef<HTMLElement>(null);
+  const [bgOpacity, setBgOpacity] = useState<number>(0);
+  const containerRef = useRef<HTMLDivElement>(null);
   const stickyRef = useRef<HTMLDivElement>(null);
 
-  const calculateScroll = () => {
-    if (!stickyRef.current || !containerRef.current) return 0;
+  const getScrollValues = () => {
+    if (!containerRef.current) return null;
 
-    const container = containerRef.current;
-    const containerTop = container.offsetTop;
-    const viewportHeight = window.innerHeight;
-    const scrollY = window.scrollY;
+    return {
+      containerTop: containerRef.current.offsetTop,
+      viewportHeight: window.innerHeight,
+      scrollY: window.scrollY,
+    };
+  };
 
-    // 시작점
-    const start = containerTop;
+  // FixedSection 배경색을 위한 스크롤 계산 (viewportHeight만큼)
+  const calculateBgOpacity = () => {
+    const values = getScrollValues();
+    if (!values) return 0;
 
-    const animationDuration = viewportHeight * 3;
+    const { containerTop, viewportHeight, scrollY } = values;
+    const start = containerTop - viewportHeight;
+    const duration = viewportHeight;
 
     if (scrollY < start) {
       return 0;
-    } else if (scrollY > start + animationDuration) {
+    } else if (scrollY < start + duration) {
+      return (scrollY - start) / duration;
+    } else if (scrollY < start + duration * 2) {
       return 1;
     } else {
-      return (scrollY - start) / animationDuration;
+      return 0;
     }
   };
+
+  // IntroItem 콘텐츠를 위한 스크롤 계산 (viewportHeight * 3)
+  const calculateScroll = () => {
+    const values = getScrollValues();
+    if (!values || !stickyRef.current) return 0;
+
+    const { containerTop, viewportHeight, scrollY } = values;
+    const animationDuration = viewportHeight * 3;
+
+    if (scrollY < containerTop) {
+      return 0;
+    } else if (scrollY > containerTop + animationDuration) {
+      return 1;
+    } else {
+      return (scrollY - containerTop) / animationDuration;
+    }
+  };
+
   // 스크롤 이벤트 핸들러
   const handleScroll = () => {
     const progress = calculateScroll();
@@ -64,6 +93,10 @@ const IntroSection = () => {
     // 현재 단계 계산 (0, 1, 2)
     const step = Math.min(Math.floor(progress * 2.5), 2);
     setCurrentStep(step);
+
+    // 배경색 투명도 계산 (viewportHeight만큼만)
+    const opacity = calculateBgOpacity();
+    setBgOpacity(opacity);
   };
 
   useEffect(() => {
@@ -84,43 +117,44 @@ const IntroSection = () => {
   };
 
   return (
-    <S.StyledIntroSection id='about' ref={containerRef}>
-      <S.StickyWrapper ref={stickyRef}>
-        {/* <S.IntroText
-          ref={textRef as React.RefObject<HTMLParagraphElement>}
-          $isVisible={textVisible}
-        >
-          적극적으로 개발하고 협업 중심으로 사고합니다.
-        </S.IntroText> */}
-        <S.IntroWrapper>
-          <SectionTitle
-            title={
-              <>
-                <S.GradientText>적극적으로 개발</S.GradientText>하고 <br />
-                협업 중심으로 사고합니다.
-              </>
-            }
-            align='center'
-          />
-          <S.IntroList>
-            {data.map((item, index) => (
-              <IntroItem
-                item={item}
-                key={item.id}
-                style={{
-                  opacity: getOpacity(index),
-                  zIndex: currentStep === index ? 1 : 0,
-                  transform:
-                    currentStep === index
-                      ? 'translate(-50%, -50%) scale(1)'
-                      : 'translate(-50%, -40%) scale(0.95)',
-                }}
-              />
-            ))}
-          </S.IntroList>
-        </S.IntroWrapper>
-      </S.StickyWrapper>
-    </S.StyledIntroSection>
+    <>
+      <S.FixedSection $bgOpacity={bgOpacity}></S.FixedSection>
+
+      <S.TitleSection ref={containerRef}>
+        <SectionTitle
+          title={
+            <>
+              적극적으로 개발하고 <br />
+              협업 중심으로 사고합니다.
+            </>
+          }
+          align='center'
+        />
+      </S.TitleSection>
+
+      <S.StyledIntroSection id='about' $bgOpacity={bgOpacity}>
+        <S.StickyWrapper ref={stickyRef}>
+          <S.IntroWrapper>
+            <S.IntroList>
+              {data.map((item, index) => (
+                <IntroItem
+                  item={item}
+                  key={item.id}
+                  style={{
+                    opacity: getOpacity(index),
+                    zIndex: currentStep === index ? 1 : 0,
+                    transform:
+                      currentStep === index
+                        ? 'translate(-50%, -50%) scale(1)'
+                        : 'translate(-50%, -40%) scale(0.95)',
+                  }}
+                />
+              ))}
+            </S.IntroList>
+          </S.IntroWrapper>
+        </S.StickyWrapper>
+      </S.StyledIntroSection>
+    </>
   );
 };
 
