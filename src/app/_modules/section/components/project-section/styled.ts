@@ -106,6 +106,7 @@ export const ProjectItemTitle = styled.strong`
   color: ${({ theme }) => theme.color.common.black};
   font-size: 2.2rem;
   font-weight: 500;
+  line-height: 1.4;
   letter-spacing: -0.5px;
   text-align: left;
   transition: color 0.3s;
@@ -157,12 +158,12 @@ export const ProjectTagText = styled.p`
 export const ProjectItemTag = styled.span<{ $isVisible: boolean }>`
   display: inline-block;
   max-width: ${({ $isVisible }) => ($isVisible ? '500px' : '10px')};
-  height: 22px;
-  margin-top: 20px;
-  line-height: 22px;
+  height: 24px;
+  margin-top: 12px;
+  line-height: 24px;
   padding: 0px 10px;
   color: ${({ theme }) => theme.color.primary.gray};
-  border: 1px solid ${({ theme }) => theme.color.primary.lightgray};
+  border: 1px solid #dcdcdc;
   border-radius: 50px;
   background-color: #fff;
   overflow: hidden;
