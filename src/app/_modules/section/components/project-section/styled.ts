@@ -11,7 +11,7 @@ export const StickyContainer = styled.div`
   height: 60dvh;
 
   ${({ theme }) => theme.responsive.mobile} {
-    height: 70dvh;
+    /* height: 70dvh; */
   }
 `;
 
@@ -28,7 +28,7 @@ export const ProjectList = styled.ul`
   position: relative;
   display: grid;
   grid-template-columns: repeat(2, 1fr);
-  gap: 4rem 3rem;
+  gap: 8rem 3rem;
   margin: 20rem 0 10rem;
   padding: 0 8rem;
 
@@ -109,6 +109,8 @@ export const ProjectItemTitle = styled.strong`
   letter-spacing: -0.5px;
   text-align: left;
   transition: color 0.3s;
+  white-space: break-spaces;
+  word-break: keep-all;
 
   ${({ theme }) => theme.responsive.mobile} {
     font-size: 1.6rem;
@@ -156,11 +158,11 @@ export const ProjectItemTag = styled.span<{ $isVisible: boolean }>`
   display: inline-block;
   max-width: ${({ $isVisible }) => ($isVisible ? '500px' : '10px')};
   height: 22px;
-  margin-top: 10px;
+  margin-top: 20px;
   line-height: 22px;
   padding: 0px 10px;
   color: ${({ theme }) => theme.color.primary.gray};
-  border: 1px solid ${({ theme }) => theme.color.primary.gray};
+  border: 1px solid ${({ theme }) => theme.color.primary.lightgray};
   border-radius: 50px;
   background-color: #fff;
   overflow: hidden;

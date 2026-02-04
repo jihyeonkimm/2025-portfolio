@@ -26,7 +26,7 @@ export const StyledHeader = styled.header<{ $scrollStart: boolean }>`
       box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
       backdrop-filter: blur(6.3px);
       -webkit-backdrop-filter: blur(6.3px);
-      border: 1px solid rgba(255, 255, 255, 0.27);
+      border: 2px solid rgba(255, 255, 255, 0.4);
       border-radius: 100px;
     `}
 

@@ -42,6 +42,7 @@ export const ContactItemTitle = styled.strong`
 `;
 
 export const ContactLink = styled(Link)`
+  position: relative;
   color: ${({ theme }) => theme.color.primary.gray};
   font-size: 1.6rem;
   letter-spacing: -0.5px;
@@ -49,13 +50,7 @@ export const ContactLink = styled(Link)`
 
   @media (hover: hover) {
     &:hover {
-      background: linear-gradient(
-        180deg,
-        ${({ theme }) => theme.color.primary.blue},
-        ${({ theme }) => theme.color.primary.purple}
-      );
-      background-clip: text;
-      -webkit-text-fill-color: transparent;
+      color: ${({ theme }) => theme.color.primary.orange};
     }
   }
 

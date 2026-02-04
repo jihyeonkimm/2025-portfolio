@@ -6,12 +6,14 @@ import * as S from './styled';
 import introDataJson from '@/app/data/introData.json';
 import SectionTitle from '@/app/_common/components/section-title/SectionTitle';
 import Image from 'next/image';
+import { useIsMobile } from '@/app/hooks/useIsMobile';
 
 interface DataProps {
   id: number;
   img: string;
   title: string;
   description: string;
+  mo_description: string;
   style?: React.CSSProperties;
 }
 
@@ -19,7 +21,15 @@ const data: DataProps[] = introDataJson.map((item) => ({
   ...item,
 }));
 
-const IntroItem = ({ item, style }: { item: DataProps; style?: React.CSSProperties }) => {
+const IntroItem = ({
+  item,
+  style,
+  isMobileView,
+}: {
+  item: DataProps;
+  style?: React.CSSProperties;
+  isMobileView: boolean;
+}) => {
   return (
     <S.IntroItem key={item.id} style={style}>
       <S.IntroItemIcon>
@@ -27,7 +37,7 @@ const IntroItem = ({ item, style }: { item: DataProps; style?: React.CSSProperti
       </S.IntroItemIcon>
       <S.IntroTextWrapper>
         <S.IntroItemTitle>{item.title}</S.IntroItemTitle>
-        <S.IntroItemText>{item.description}</S.IntroItemText>
+        <S.IntroItemText>{isMobileView ? item.mo_description : item.description}</S.IntroItemText>
       </S.IntroTextWrapper>
     </S.IntroItem>
   );
@@ -38,6 +48,7 @@ const IntroSection = () => {
   const [bgOpacity, setBgOpacity] = useState<number>(0);
   const containerRef = useRef<HTMLDivElement>(null);
   const stickyRef = useRef<HTMLDivElement>(null);
+  const isMobileView = useIsMobile();
 
   const getScrollValues = () => {
     if (!containerRef.current) return null;
@@ -140,6 +151,7 @@ const IntroSection = () => {
                 <IntroItem
                   item={item}
                   key={item.id}
+                  isMobileView={isMobileView}
                   style={{
                     opacity: getOpacity(index),
                     zIndex: currentStep === index ? 1 : 0,

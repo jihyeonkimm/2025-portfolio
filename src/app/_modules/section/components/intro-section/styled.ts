@@ -79,7 +79,7 @@ export const IntroItem = styled.li`
   display: flex;
   align-items: center;
   align-self: stretch;
-  gap: 0 2rem;
+  gap: 4rem 6rem;
   padding: 2rem;
   transition: 0.3s;
 
@@ -105,7 +105,7 @@ export const IntroTextWrapper = styled.div`
 
 export const IntroItemTitle = styled.strong`
   color: ${({ theme }) => theme.color.common.black};
-  font-size: 2.4rem;
+  font-size: 3.2rem;
   font-weight: 600;
   line-height: 1.6;
   letter-spacing: -0.5px;
@@ -123,6 +123,7 @@ export const IntroItemText = styled.p`
   font-size: 1.8rem;
   line-height: 1.4;
   letter-spacing: -0.5px;
+  white-space: break-spaces;
   word-break: keep-all;
 
   ${({ theme }) => theme.responsive.mobile} {
@@ -137,7 +138,6 @@ export const IntroItemIcon = styled.span`
   display: block;
   width: 30rem;
   height: 30rem;
-  margin-bottom: 5rem;
 
   ${({ theme }) => theme.responsive.mobile} {
     width: 13rem;
