@@ -76,6 +76,7 @@ export const ProjectItemImage = styled.span<{ $isVisible: boolean }>`
   & img {
     width: 100%;
     transform-origin: center;
+    object-fit: cover;
     transition: 0.3s;
   }
 
