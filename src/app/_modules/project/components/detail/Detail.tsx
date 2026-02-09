@@ -75,14 +75,16 @@ const ProjectDetail = ({ projectName }: ProjectDetailProps) => {
                 ))}
               </S.SkillContainer>
             </S.ProjectTitleItem>
-            <S.ProjectTitleItem>
-              <S.DetailTitle>관련 링크</S.DetailTitle>
-              <S.DetailText>
-                <Link href={currentProject.link || ''} target='_blank'>
-                  {currentProject.link}
-                </Link>
-              </S.DetailText>
-            </S.ProjectTitleItem>
+            {currentProject.link && (
+              <S.ProjectTitleItem>
+                <S.DetailTitle>관련 링크</S.DetailTitle>
+                <S.DetailText>
+                  <Link href={currentProject.link || ''} target='_blank'>
+                    {currentProject.link}
+                  </Link>
+                </S.DetailText>
+              </S.ProjectTitleItem>
+            )}
           </S.ProjectTitleList>
         </S.ProjectTitleContainer>
         <S.DetailListContainer>
@@ -92,9 +94,19 @@ const ProjectDetail = ({ projectName }: ProjectDetailProps) => {
               <S.DetailItem key={`${index}-${detail.title}`}>
                 <S.DetailItemTitle>{`${index + 1}. ${detail.title}`}</S.DetailItemTitle>
                 {detail.description &&
-                  detail.description.map((text, index) => (
-                    <S.DetailItemText key={`${index}-${text}`}>{text}</S.DetailItemText>
-                  ))}
+                  detail.description.map((text, index) => {
+                    const isImagePath = text.startsWith('projects/');
+
+                    if (isImagePath) {
+                      return (
+                        <S.DetailItemImage key={`${index}-${text}`}>
+                          <ImageComponent storagePath={text} alt='프로젝트 상세 이미지' />
+                        </S.DetailItemImage>
+                      );
+                    }
+
+                    return <S.DetailItemText key={`${index}-${text}`}>{text}</S.DetailItemText>;
+                  })}
               </S.DetailItem>
             ))}
           </S.DetailList>

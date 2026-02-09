@@ -1,30 +1,58 @@
 [
   {
     "id": 1,
-    "title": "Next.js / React 기반 프로젝트 개발",
+    "title": "대한상공회의소 \n직장인 소통 플랫폼 'Sople' 리뉴얼 개발",
     "projectName": "sople",
     "period": "2025.04 - 2025.07",
     "thumbnail": "/assets/images/project-thumbnail-01.png"
   },
   {
     "id": 2,
-    "title": "React Native를 사용한 모바일 앱 개발",
+    "title": "영원무역 \n근로자 관리 모바일 애플리케이션 'YEEP' 개발",
     "projectName": "yeep",
     "period": "2025.03 - 2025.04",
     "thumbnail": "/assets/images/project-thumbnail-02.png"
   },
   {
     "id": 3,
-    "title": "관리자페이지와 클라이언트 페이지 연동 개발",
+    "title": "시청자미디어재단 \n‘참여누리’ 온라인 서비스 통합구축",
     "projectName": "kcmf",
     "period": "2024.09 - 2025.01",
     "thumbnail": "/assets/images/project-thumbnail-03.png"
   },
   {
     "id": 4,
-    "title": "재사용성을 고려한 React 컴포넌트 개발",
+    "title": "넥스트컬쳐 \n설문조사 솔루션 ‘SurveyDog’ 개발",
     "projectName": "surveydog",
     "period": "2024.07 - 2024.09",
     "thumbnail": "/assets/images/project-thumbnail-04.png"
+  },
+  {
+    "id": 5,
+    "title": "EY한영 \nKorea Portal 계약관리시스템 서비스 신규 구축",
+    "projectName": "ey",
+    "period": "2023.07 ~ 2024.01",
+    "thumbnail": "/assets/images/project-thumbnail-05.png"
+  },
+  {
+    "id": 6,
+    "title": "웅진컴퍼스 \n교사 전용 온라인 서비스 ‘CLASSBOX’ 구축",
+    "projectName": "classbox",
+    "period": "2023.03 ~ 2023.08",
+    "thumbnail": "/assets/images/project-thumbnail-06.png"
+  },
+  {
+    "id": 7,
+    "title": "Google Play \n온라인 감사제 Diamond Valley",
+    "projectName": "googleplay",
+    "period": "2022.06 ~ 2022.10",
+    "thumbnail": "/assets/images/project-thumbnail-07.jpg"
+  },
+  {
+    "id": 8,
+    "title": "SK스토아 \nT-Commerce 웹앱 운영",
+    "projectName": "skstoa",
+    "period": "2021.07 ~ 2024.02",
+    "thumbnail": "/assets/images/project-thumbnail-08.png"
   }
 ]

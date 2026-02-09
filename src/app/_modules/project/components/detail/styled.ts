@@ -30,7 +30,7 @@ export const ProjectCover = styled.div`
     left: 0;
     width: 100%;
     height: 100%;
-    background: linear-gradient(180deg, rgba(18, 18, 18, 0.1) 0%, rgba(18, 18, 18, 0.9) 100%);
+    background: linear-gradient(180deg, rgba(18, 18, 18, 0.1) 50%, rgba(18, 18, 18, 0.5) 100%);
   }
 
   & > div {
@@ -162,7 +162,7 @@ export const SkillTooltip = styled.span`
     border-left: 5px solid transparent;
     border-right: 5px solid transparent;
     border-top: 5px solid transparent;
-    border-bottom: 5px solid ${({ theme }) => theme.color.primary.blue};
+    border-bottom: 5px solid ${({ theme }) => theme.color.primary.orange};
   }
 `;
 
@@ -266,5 +266,26 @@ export const DetailItemText = styled.span`
 
   ${({ theme }) => theme.responsive.mobile} {
     font-size: 1.4rem;
+  }
+`;
+
+export const DetailItemImage = styled.div`
+  position: relative;
+  width: 100%;
+  max-width: 100%;
+  margin: 10px 0;
+  border-radius: 10px;
+  aspect-ratio: 1 / 0.6;
+  overflow: hidden;
+
+  & img {
+    width: 100%;
+    height: auto;
+    object-fit: cover;
+  }
+
+  ${({ theme }) => theme.responsive.mobile} {
+    margin: 10px 0;
+    border-radius: 8px;
   }
 `;
