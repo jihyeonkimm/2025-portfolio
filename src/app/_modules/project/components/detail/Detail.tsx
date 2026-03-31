@@ -1,6 +1,6 @@
 'use client';
 
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import { useProjects } from '../../hooks/useProjects';
 import * as S from './styled';
 import Image from 'next/image';
@@ -14,6 +14,11 @@ interface ProjectDetailProps {
 
 const ProjectDetail = ({ projectName }: ProjectDetailProps) => {
   const { projects, loading } = useProjects();
+  const [logoError, setLogoError] = useState<boolean>(false);
+
+  useEffect(() => {
+    setLogoError(false);
+  }, [projectName]);
 
   const currentProject = projects.find((project) => project.id === projectName);
 
@@ -27,17 +32,20 @@ const ProjectDetail = ({ projectName }: ProjectDetailProps) => {
         <S.ProjectTitleContainer>
           <S.ProjectCover>
             <ImageComponent
-              storagePath={currentProject.cover ?? ''}
+              src={currentProject.cover ?? ''}
               alt={currentProject.title ?? ''}
             />
-            <S.ProjectLogo>
-              <Image
-                src={`/assets/images/project-logo/${currentProject.id}.svg`}
-                alt='프로젝트 로고'
-                fill
-                sizes='100%'
-              />
-            </S.ProjectLogo>
+            {!logoError && (
+              <S.ProjectLogo>
+                <Image
+                  src={`/assets/images/project-logo/${currentProject.id}.svg`}
+                  alt='프로젝트 로고'
+                  fill
+                  sizes='100%'
+                  onError={() => setLogoError(true)}
+                />
+              </S.ProjectLogo>
+            )}
             <S.ProjectDetailTitle>{currentProject.title}</S.ProjectDetailTitle>
           </S.ProjectCover>
           <S.ProjectTitleList>
@@ -95,12 +103,12 @@ const ProjectDetail = ({ projectName }: ProjectDetailProps) => {
                 <S.DetailItemTitle>{`${index + 1}. ${detail.title}`}</S.DetailItemTitle>
                 {detail.description &&
                   detail.description.map((text, index) => {
-                    const isImagePath = text.startsWith('projects/');
+                    const isImageUrl = text.startsWith('https://');
 
-                    if (isImagePath) {
+                    if (isImageUrl) {
                       return (
                         <S.DetailItemImage key={`${index}-${text}`}>
-                          <ImageComponent storagePath={text} alt='프로젝트 상세 이미지' />
+                          <ImageComponent src={text} alt='프로젝트 상세 이미지' />
                         </S.DetailItemImage>
                       );
                     }
